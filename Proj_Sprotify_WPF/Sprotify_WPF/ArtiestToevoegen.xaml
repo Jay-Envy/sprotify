@@ -1,0 +1,31 @@
+﻿<Window x:Class="Sprotify_WPF.ArtiestToevoegen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sprotify_WPF"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="ArtiestToevoegen" Height="160" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Source="https://icons-for-free.com/iconfiles/png/512/account+circle+24px-131985189042594487.png" Grid.Column="0" Grid.RowSpan="2" Width="75" Height="75" Margin="5"/>
+        <TextBox x:Name="txtArtiestNaam" Grid.Row="0" Grid.Column="1" Margin="5" materialDesign:HintAssist.Hint="Artiest Naam" />
+        <Button x:Name="btnArtiestToevoegen" Grid.Row="1" Grid.Column="1" Margin="5" Content="Artiest toevoegen" />
+    </Grid>
+</Window>

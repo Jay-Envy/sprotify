@@ -1,0 +1,49 @@
+﻿<Window x:Class="Sprotify_WPF.Artiest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sprotify_WPF"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Artiest" Height="600" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="323*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="322*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btnHome" Content="{materialDesign:PackIcon Kind=Home, Size=25 }" Grid.Column="0" Grid.Row="0" Margin="5" Click="Home_Click"/>
+
+        <!--<Button Height="100" Width="100">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="https://icons-for-free.com/iconfiles/png/512/account+circle+24px-131985189042594487.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>-->
+
+        <Image Source="https://icons-for-free.com/iconfiles/png/512/account+circle+24px-131985189042594487.png" Grid.Column="0" Grid.Row="1" Margin="5"/>
+        <Button x:Name="btnNewArtist" Style="{DynamicResource MaterialDesignToolButton}" HorizontalAlignment="Right" Content="Artiest toevoegen" Grid.Column="1" Grid.Row="1" Height="50" Margin="5" FontSize="20" Click="ArtiestToevoegen_Click"/>
+        <Button Content="{materialDesign:PackIcon Kind=Plus, Size=25 }" ToolTip="Icon" Grid.Row="1" Grid.Column="2" Click="ArtiestToevoegen_Click" />
+        <ListBox x:Name="lbArtiesten" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" />
+
+    </Grid>
+</Window>
