@@ -44,5 +44,11 @@
     <Compile Include="FileOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sprotify_Models\Sprotify_Models.csproj">
+      <Project>{d14820df-c0a5-4f18-9375-05131a58c543}</Project>
+      <Name>Sprotify_Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

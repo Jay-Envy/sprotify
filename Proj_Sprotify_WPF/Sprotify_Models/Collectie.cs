@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sprotify_Models
 {
-    public abstract class Collectie
+    public abstract class Collectie:IDataErrorInfo
     {
         //properties
         private string naam;
@@ -22,16 +23,18 @@ namespace Sprotify_Models
                 naam = value;
             }
         }
-        public string Foutmeldingen
+
+        public string Error
         {
             get
             {
                 string foutmeldingen = "";
-                foreach (var item in this.GetType().GetProperties())
+
+                foreach (var property in this.GetType().GetProperties()) //reflection 
                 {
-                    if (item.CanRead && item.CanWrite)
+                    if (property.CanRead && property.CanWrite)
                     {
-                        string fout = Valideer(item.Name);
+                        string fout = this[property.Name];
                         if (!string.IsNullOrWhiteSpace(fout))
                         {
                             foutmeldingen += fout + Environment.NewLine;
@@ -49,10 +52,13 @@ namespace Sprotify_Models
         }
 
         //Methodes
+        public abstract string this[string columnName] { get; }
+
+
+
         public bool IsGeldig()
         {
-            return string.IsNullOrWhiteSpace(Foutmeldingen);
+            return string.IsNullOrWhiteSpace(Error);
         }
-        public abstract string Valideer(string propertynaam);
     }
 }

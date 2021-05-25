@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sprotify_Models
 {
-    public class Artiest:Collectie
+    public class Artiest:Playlist
     {
         //props
         private string regio;
@@ -31,17 +31,17 @@ namespace Sprotify_Models
         }
 
         //Methodes
-        public override string Valideer(string propertynaam)
+        public override string this[string columnName]
         {
-            if (propertynaam == nameof(Naam) && string.IsNullOrWhiteSpace(Naam))
+            get
             {
-                return "Naam is een verplicht in te vullen veld!";
+                if (columnName == nameof(Regio) && string.IsNullOrWhiteSpace(Regio))
+                {
+                    return "Regio is een verplict in te vullen veld!";
+                }
+                return base[columnName];
             }
-            else if (propertynaam == nameof(Regio) && string.IsNullOrWhiteSpace(Regio))
-            {
-                return "Regio is een verplict in te vullen veld!";
-            }
-            return "";
+
         }
     }
 }
