@@ -1,2 +1,2 @@
 # sprotify
-Project for Datamanipulatie
+Project voor Datamanipulatie
