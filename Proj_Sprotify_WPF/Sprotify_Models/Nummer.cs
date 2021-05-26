@@ -38,11 +38,11 @@ namespace Sprotify_Models
         }
 
         //constructor
-        public Nummer(string naam, int lengte, string genre):base(naam)
+        public Nummer(string naam, int cijfer, string string2):base(naam, cijfer, string2)
         {
             Naam = naam;
-            Lengte = lengte;
-            Genre = genre;
+            Lengte = cijfer;
+            Genre = string2;
         }
         //Methodes
         public override string this[string columnName]

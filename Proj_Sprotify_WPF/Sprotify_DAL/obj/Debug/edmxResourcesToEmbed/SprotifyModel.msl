@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SprotifyModelStoreContainer" CdmEntityContainer="SprotifyEntities">
+    <EntitySetMapping Name="Album">
+      <EntityTypeMapping TypeName="SprotifyModel.Album">
+        <MappingFragment StoreEntitySet="Album">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="jaar" ColumnName="jaar" />
+          <ScalarProperty Name="like" ColumnName="like" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlbumArtiest">
+      <EntityTypeMapping TypeName="SprotifyModel.AlbumArtiest">
+        <MappingFragment StoreEntitySet="AlbumArtiest">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="artiestId" ColumnName="artiestId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlbumGenre">
+      <EntityTypeMapping TypeName="SprotifyModel.AlbumGenre">
+        <MappingFragment StoreEntitySet="AlbumGenre">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="genreId" ColumnName="genreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Artiest">
+      <EntityTypeMapping TypeName="SprotifyModel.Artiest">
+        <MappingFragment StoreEntitySet="Artiest">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="verified" ColumnName="verified" />
+          <ScalarProperty Name="maandelijkseLuisteraars" ColumnName="maandelijkseLuisteraars" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="follow" ColumnName="follow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArtiestNummer">
+      <EntityTypeMapping TypeName="SprotifyModel.ArtiestNummer">
+        <MappingFragment StoreEntitySet="ArtiestNummer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="artiestId" ColumnName="artiestId" />
+          <ScalarProperty Name="nummerId" ColumnName="nummerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="SprotifyModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="AantalLikes" ColumnName="AantalLikes" />
+          <ScalarProperty Name="Comment1" ColumnName="Comment" />
+          <ScalarProperty Name="nummerId" ColumnName="nummerId" />
+          <ScalarProperty Name="gebruikerId" ColumnName="gebruikerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gebruiker">
+      <EntityTypeMapping TypeName="SprotifyModel.Gebruiker">
+        <MappingFragment StoreEntitySet="Gebruiker">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+          <ScalarProperty Name="emailadres" ColumnName="emailadres" />
+          <ScalarProperty Name="telefoonnummer" ColumnName="telefoonnummer" />
+          <ScalarProperty Name="geboortedatum" ColumnName="geboortedatum" />
+          <ScalarProperty Name="wachtwoord" ColumnName="wachtwoord" />
+          <ScalarProperty Name="geslacht" ColumnName="geslacht" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genre">
+      <EntityTypeMapping TypeName="SprotifyModel.Genre">
+        <MappingFragment StoreEntitySet="Genre">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nummer">
+      <EntityTypeMapping TypeName="SprotifyModel.Nummer">
+        <MappingFragment StoreEntitySet="Nummer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titel" ColumnName="titel" />
+          <ScalarProperty Name="aantalKeerGespeeld" ColumnName="aantalKeerGespeeld" />
+          <ScalarProperty Name="lengte" ColumnName="lengte" />
+          <ScalarProperty Name="regio" ColumnName="regio" />
+          <ScalarProperty Name="like" ColumnName="like" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="sourceId" ColumnName="sourceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NummerGenre">
+      <EntityTypeMapping TypeName="SprotifyModel.NummerGenre">
+        <MappingFragment StoreEntitySet="NummerGenre">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nummerId" ColumnName="nummerId" />
+          <ScalarProperty Name="genreId" ColumnName="genreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Playlist">
+      <EntityTypeMapping TypeName="SprotifyModel.Playlist">
+        <MappingFragment StoreEntitySet="Playlist">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="aantalNummers" ColumnName="aantalNummers" />
+          <ScalarProperty Name="eigenaar" ColumnName="eigenaar" />
+          <ScalarProperty Name="private" ColumnName="private" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlaylistGebruiker">
+      <EntityTypeMapping TypeName="SprotifyModel.PlaylistGebruiker">
+        <MappingFragment StoreEntitySet="PlaylistGebruiker">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="gebruikerId" ColumnName="gebruikerId" />
+          <ScalarProperty Name="playlistId" ColumnName="playlistId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlaylistNummer">
+      <EntityTypeMapping TypeName="SprotifyModel.PlaylistNummer">
+        <MappingFragment StoreEntitySet="PlaylistNummer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="playlistId" ColumnName="playlistId" />
+          <ScalarProperty Name="nummerId" ColumnName="nummerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Source">
+      <EntityTypeMapping TypeName="SprotifyModel.Source">
+        <MappingFragment StoreEntitySet="Source">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="locatie" ColumnName="locatie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

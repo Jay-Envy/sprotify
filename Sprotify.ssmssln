@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Solution File, Format Version 18.00
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Sprotify", "Sprotify\Sprotify.ssmssqlproj", "{B76F564E-F25C-4906-AE2A-B517A9E00AEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B76F564E-F25C-4906-AE2A-B517A9E00AEF}.Default|Default.ActiveCfg = Default
+		{989A0023-C8B7-43B7-9B0F-3673C5FB6467}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55D00D08-F341-40F7-8556-2275D49CAD08}
+	EndGlobalSection
+EndGlobal

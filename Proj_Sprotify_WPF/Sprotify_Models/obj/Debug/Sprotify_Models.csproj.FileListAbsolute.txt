@@ -1,0 +1,12 @@
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\bin\Debug\Sprotify_Models.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\bin\Debug\Sprotify_Models.pdb
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\obj\Debug\Sprotify_Models.csprojAssemblyReference.cache
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\obj\Debug\Sprotify_Models.csproj.CoreCompileInputs.cache
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\obj\Debug\Sprotify_Models.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\obj\Debug\Sprotify_Models.pdb
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\bin\Debug\Sprotify_Models.dll.config
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\bin\Debug\EntityFramework.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\bin\Debug\EntityFramework.xml
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_Models\obj\Debug\Sprotify_Models.csproj.CopyComplete

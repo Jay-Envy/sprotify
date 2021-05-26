@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprotify_DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,5 +39,29 @@ namespace Sprotify_WPF
             artiestToevoegenWindow.Show();
 
         }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            dataArtiesten.ItemsSource = DatabaseOperations.OphalenArtiesten();
+        }
+        //private void BtnOphalenViaWerknemerID_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (int.TryParse(txtArtiestID.Text, out int artiestID))
+        //    {
+        //        Artiest a = DatabaseOperations.OphalenArtiestViaZoek(artiestID);
+        //        if (a != null)
+        //        {
+        //            lblArtiest.Content = a.Name + " " + a.Genre;
+        //        }
+        //        else
+        //        {
+        //            lblWerknemer.Content = "Werknemer niet gevonden!";
+        //        }
+        //    }
+        //    else
+        //    {
+        //        lblWerknemer.Content = "WerknemerId is een verplicht numeriek veld!"
+        //    }
+        //}
     }
 }

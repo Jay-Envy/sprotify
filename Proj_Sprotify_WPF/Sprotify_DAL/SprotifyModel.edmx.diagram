@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="39fea53c85074352b91b1bb206e598db" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="SprotifyModel.Album" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.AlbumArtiest" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.AlbumGenre" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.Artiest" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.ArtiestNummer" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.Comment" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.Gebruiker" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.Genre" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.Nummer" Width="1.5" PointX="6" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.NummerGenre" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.Playlist" Width="1.5" PointX="9" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.PlaylistGebruiker" Width="1.5" PointX="11.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.PlaylistNummer" Width="1.5" PointX="11.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SprotifyModel.Source" Width="1.5" PointX="3.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="SprotifyModel.FK11_albumId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK5_albumId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK9_albumId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK12_artiestId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK10_genreId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK13_artiestId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK14_nummerId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK15_nummerId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK16_gebruikerId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK1_gebruikerId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK8_genreId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK4_nummerId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK6_sourceId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK7_nummerId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK2_playlistId" ManuallyRouted="false" />
+        <AssociationConnector Association="SprotifyModel.FK3_playlistId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

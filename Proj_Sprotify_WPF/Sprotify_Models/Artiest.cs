@@ -22,12 +22,26 @@ namespace Sprotify_Models
                 regio = value;
             }
         }
+        private int beginJaar;
+        public int BeginJaar
+        {
+            get { return beginJaar; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new Exception("Het beginjaar moet groter zijn dan 0!");
+                }
+                beginJaar = value;
+            }
+        }
 
         //Constructor
-        public Artiest(string naam, string regio):base(naam)
+        public Artiest(string naam, int cijfer, string string2):base(naam, cijfer, string2)
         {
             Naam = naam;
-            Regio = regio;
+            BeginJaar = cijfer;
+            Regio = string2;
         }
 
         //Methodes

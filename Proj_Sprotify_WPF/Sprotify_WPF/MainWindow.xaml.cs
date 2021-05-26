@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sprotify_DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,5 +57,21 @@ namespace Sprotify_WPF
             playlistToevoegenWindow.Show();
             this.Close();
         }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            lblSearch.Content = "";
+            List<ArtiestNummer> zoek = DatabaseOperations.OphalenArtiestNummer(txtSearch.Text);
+            foreach (ArtiestNummer nummer in zoek)
+            {
+                //lblSearch.Content += $"{nummer.Nummer.titel} - {nummer.Artiest.naam} - {TimeSpan.FromSeconds(nummer.Nummer.lengte)}" + Environment.NewLine;
+                lblSearch.Content += "Test";
+            }
+        }
+
+
+        //Zoekopdracht nummer komt terug als Nummer - Artiest - Lengte
+        //Seconden naar lengte: TimeSpan ts = TimeSpan.FromSeconds(seconden);
+
     }
 }

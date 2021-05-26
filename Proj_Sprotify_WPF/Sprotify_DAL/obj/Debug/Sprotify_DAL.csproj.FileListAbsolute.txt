@@ -1,0 +1,15 @@
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\obj\Debug\Sprotify_DAL.csprojAssemblyReference.cache
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\obj\Debug\Sprotify_DAL.csproj.CoreCompileInputs.cache
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\Sprotify_DAL.dll.config
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\Sprotify_DAL.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\Sprotify_DAL.pdb
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\EntityFramework.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\Sprotify_Models.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\Sprotify_Models.pdb
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\Sprotify_Models.dll.config
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\EntityFramework.xml
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\obj\Debug\Sprotify_DAL.csproj.CopyComplete
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\obj\Debug\Sprotify_DAL.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\obj\Debug\Sprotify_DAL.pdb
