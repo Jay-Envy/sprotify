@@ -35,8 +35,8 @@ namespace Sprotify_WPF
 
         private void Afspeellijst_Click(object sender, RoutedEventArgs e)
         {
-            Playlist playlistWindow = new Playlist();
-            playlistWindow.Show();
+            Nummer nummerWindow = new Nummer();
+            nummerWindow.Show();
             this.Close();
         }
 
@@ -49,34 +49,26 @@ namespace Sprotify_WPF
             this.Close();
         }
 
-        private void AfspeellijstToevoegen_Click(object sender, RoutedEventArgs e)
+        private void NummerToevoegen_Click(object sender, RoutedEventArgs e)
         {
-            PlaylistToevoegen playlistToevoegenWindow = new PlaylistToevoegen();
-            Playlist playlistWindow = new Playlist();
-            playlistWindow.Show();
-            playlistToevoegenWindow.Show();
+            NummerToevoegen nummerToevoegenWindow = new NummerToevoegen();
+            Nummer nummerWindow = new Nummer();
+            nummerWindow.Show();
+            nummerToevoegenWindow.Show();
             this.Close();
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            //lblSearch.Content = "";
-            //List<ArtiestNummer> zoek = DatabaseOperations.OphalenArtiestNummer(txtSearch.Text);
-            //foreach (ArtiestNummer nummer in zoek)
-            //{
-            //    lblSearch.Content += $"{nummer.Nummer.titel} - {nummer.Artiest.naam} - {TimeSpan.FromSeconds(nummer.Nummer.lengte)}" + Environment.NewLine;
-            //    lblSearch.Content += "Test";
-            //}
-            string foutmelding = Valideer("txtOrderID");
-            foutmelding += Valideer("txtHoeveelheid");
-            foutmelding += Valideer("cmbProducten");
+            //Als niets wordt ingevuld, geef alle nummers weer, met een zoekopdracht, zoek specifieke nummers
             string search = txtSearch.Text;
-            if (search.Length >= 3)
+
+            if (search.Length > 0)
             {
-                List<ArtiestNummer> artNums = DatabaseOperations.OphalenArtiestNummer(search);
-                if (artNums != null)
+                List<ArtiestNummer> nums = DatabaseOperations.OphalenArtiestNummer(search);
+                if (nums.Count != 0)
                 {
-                    dataSearch.ItemsSource = artNums;
+                    dataSearch.ItemsSource = nums;
                 }
                 else
                 {
@@ -85,8 +77,18 @@ namespace Sprotify_WPF
             }
             else
             {
-                MessageBox.Show("Geef een zoekopdracht in van minstens 3 karakters.");
+                List<Sprotify_DAL.Nummer> nums = DatabaseOperations.OphalenNummers();
+                if (nums.Count != 0)
+                {
+                    dataSearch.ItemsSource = nums;
+                }
+                else
+                {
+                    MessageBox.Show("Er zijn geen resultaten gevonden");
+                }
             }
+
+
         }
 
         //VALIDATIE

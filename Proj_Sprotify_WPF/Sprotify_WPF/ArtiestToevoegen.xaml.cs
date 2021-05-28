@@ -25,23 +25,30 @@ namespace Sprotify_WPF
         {
             InitializeComponent();
         }
+        
+        //VALIDATIE
+        private string Valideer(string columnName)
+        {
+            //Enkel naam heeft validatie nodig. Checkbox is automatisch true/false
+            if (columnName == "txtArtiestNaam" && string.IsNullOrWhiteSpace(txtArtiestNaam.Text))
+            {
+                return "De naam moet ingevuld zijn!" + Environment.NewLine;
+            }
+            return "";
+        }
 
-
-        private void Toevoegen_Click(object sender, RoutedEventArgs e)
+        private void ArtiestToevoegen_Click(object sender, RoutedEventArgs e)
         {
             string foutmelding = Valideer("txtArtiestNaam");
-            foutmelding += Valideer("txtArtiestMaand");
-            foutmelding += Valideer("txtArtiestVerified");
-            foutmelding += Valideer("txtArtiestFollow");
 
             if (string.IsNullOrWhiteSpace(foutmelding))
             {
-                
+                Random random = new Random();
 
                 Sprotify_DAL.Artiest artiest = new Sprotify_DAL.Artiest();
                 artiest.naam = txtArtiestNaam.Text;
-                artiest.maandelijkseLuisteraars = int.Parse(txtArtiestMaand.Text);
-                artiest.verified = bool.Parse(txtArtiestVerified.Text);
+                artiest.maandelijkseLuisteraars = random.Next();
+                artiest.verified = cbVerified.IsChecked;
 
                 if (artiest.IsGeldig())
                 {
@@ -53,34 +60,19 @@ namespace Sprotify_WPF
                     else
                     {
                         MessageBox.Show($"{artiest.naam} is toegevoegd.");
+                        Close();
                     }
                 }
+                else
                 {
-
+                    MessageBox.Show("Deze actie is niet geldig");
                 }
             }
             else
             {
                 MessageBox.Show(foutmelding);
             }
-        }
-        
-        //VALIDATIE
-        private string Valideer(string columnName)
-        {
-            if (columnName == "txtArtiestNaam" && string.IsNullOrWhiteSpace(txtArtiestNaam.Text))
-            {
-                return "De naam moet ingevuld zijn!" + Environment.NewLine;
-            }
-            if (columnName == "txtArtiestMaand" && !int.TryParse(txtArtiestMaand.Text, out int maand))
-            {
-                return "Maandelijkse luisteraars moet een numerieke waarde zijn!" + Environment.NewLine;
-            }
-            if (columnName == "txtArtiestVerified" && !bool.TryParse(txtArtiestVerified.Text, out bool verified))
-            {
-                return "Verified moet \"True\" of \"False\" zijn!" + Environment.NewLine;
-            }
-            return "";
+
         }
     }
 }

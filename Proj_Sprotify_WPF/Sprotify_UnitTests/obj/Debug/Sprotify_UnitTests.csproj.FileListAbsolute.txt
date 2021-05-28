@@ -20,3 +20,6 @@ C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sp
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_UnitTests\bin\Debug\Sprotify_Models.dll.config
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_UnitTests\bin\Debug\EntityFramework.xml
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_UnitTests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_UnitTests\bin\Debug\Sprotify_DAL.dll
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_UnitTests\bin\Debug\Sprotify_DAL.pdb
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_UnitTests\bin\Debug\Sprotify_DAL.dll.config

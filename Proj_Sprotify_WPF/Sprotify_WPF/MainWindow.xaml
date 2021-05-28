@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:Sprotify_WPF"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.Foreground="{DynamicResource MaterialDesignDarkForeground}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{DynamicResource MaterialDesignDarkBackground}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Home" Height="440" Width="800">
     <Grid>
@@ -24,13 +24,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Button x:Name="btnArtiesten" Content="Artiesten" Grid.Row="0" Grid.Column="0" Margin="5" Height="32" FontSize="20" Click="Artiesten_Click"/>
         <Button Content="{materialDesign:PackIcon Kind=Plus, Size=25 }" ToolTip="Icon" Grid.Row="0" Grid.Column="1" Click="ArtiestToevoegen_Click" />
 
-        <Button x:Name="btnAfspeellijsten" Content="Afspeellijsten" Grid.Row="1" Grid.Column="0" Margin="5" Height="32" FontSize="20" RenderTransformOrigin="0.5,0.5" Click="Afspeellijst_Click"/>
-        <Button Content="{materialDesign:PackIcon Kind=Plus, Size=25 }" ToolTip="Icon" Grid.Row="1" Grid.Column="1" Click="AfspeellijstToevoegen_Click" />
+        <Button x:Name="btnAfspeellijsten" Content="Nummers" Grid.Row="1" Grid.Column="0" Margin="5" Height="32" FontSize="20" RenderTransformOrigin="0.5,0.5" Click="Afspeellijst_Click"/>
+        <Button Content="{materialDesign:PackIcon Kind=Plus, Size=25 }" ToolTip="Icon" Grid.Row="1" Grid.Column="1" Click="NummerToevoegen_Click" />
         
         <TextBox x:Name="txtSearch" Grid.Row="2" Margin="5" materialDesign:HintAssist.Hint="Zoek nummer" />
         <Button Content="{materialDesign:PackIcon Kind=Search, Size=25 }" ToolTip="Icon" Grid.Row="2" Grid.Column="1" Click="Search_Click" />
@@ -38,10 +39,11 @@
         <Label Content="Zoekresultaten:" Margin="5" Grid.Row="3"/>
         <DataGrid x:Name="dataSearch" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Nummer.naam}" Header="Titel"/>
+                <DataGridTextColumn Binding="{Binding titel}" Header="Titel"/>
                 <DataGridTextColumn Binding="{Binding Artiest.naam}" Header="Artiest"/>
-                <DataGridTextColumn Binding="{Binding Nummer.lengte}" Header="Lengte"/>
+                <DataGridTextColumn Binding="{Binding lengte}" Header="Lengte"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Label x:Name="lblSearch" Grid.Column="0" Grid.Row="4" Margin="5" Foreground="LightYellow"/>
     </Grid>
 </Window>

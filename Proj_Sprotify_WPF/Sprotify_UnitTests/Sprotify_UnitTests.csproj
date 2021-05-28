@@ -57,7 +57,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="SprotifyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sprotify_DAL\Sprotify_DAL.csproj">
+      <Project>{ac55128b-77f5-4007-a101-7c3ca5d69be6}</Project>
+      <Name>Sprotify_DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sprotify_Models\Sprotify_Models.csproj">
       <Project>{d14820df-c0a5-4f18-9375-05131a58c543}</Project>
       <Name>Sprotify_Models</Name>

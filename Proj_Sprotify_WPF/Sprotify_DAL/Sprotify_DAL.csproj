@@ -66,7 +66,6 @@
     </Compile>
     <Compile Include="Partials\Artiest.cs" />
     <Compile Include="Partials\Nummer.cs" />
-    <Compile Include="Partials\Playlist.cs" />
     <Compile Include="Playlist.cs">
       <DependentUpon>SprotifyModel.tt</DependentUpon>
     </Compile>

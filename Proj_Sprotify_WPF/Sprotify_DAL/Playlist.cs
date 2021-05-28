@@ -22,7 +22,6 @@ namespace Sprotify_DAL
     
         public int id { get; set; }
         public string naam { get; set; }
-        public int aantalNummers { get; set; }
         public bool @private { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

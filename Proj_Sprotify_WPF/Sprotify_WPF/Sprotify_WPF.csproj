@@ -97,21 +97,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Playlist.xaml">
+    <Page Include="Nummer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PlaylistToevoegen.xaml">
+    <Page Include="NummerToevoegen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Playlist.xaml.cs">
-      <DependentUpon>Playlist.xaml</DependentUpon>
+    <Compile Include="Nummer.xaml.cs">
+      <DependentUpon>Nummer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PlaylistToevoegen.xaml.cs">
-      <DependentUpon>PlaylistToevoegen.xaml</DependentUpon>
+    <Compile Include="NummerToevoegen.xaml.cs">
+      <DependentUpon>NummerToevoegen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -32,8 +32,6 @@ C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sp
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Artiest.g.cs
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\ArtiestToevoegen.g.cs
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\MainWindow.g.cs
-C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Playlist.g.cs
-C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\PlaylistToevoegen.g.cs
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\App.g.cs
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Sprotify_WPF_MarkupCompile.cache
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Sprotify_WPF_MarkupCompile.lref
@@ -69,10 +67,12 @@ C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sp
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Artiest.baml
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\ArtiestToevoegen.baml
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\MainWindow.baml
-C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Playlist.baml
-C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\PlaylistToevoegen.baml
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Sprotify_WPF.g.resources
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Sprotify_WPF.Properties.Resources.resources
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Sprotify_WPF.csproj.GenerateResource.cache
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Sprotify_WPF.csproj.CoreCompileInputs.cache
 C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Sprotify_WPF.csproj.CopyComplete
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Nummer.g.cs
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\NummerToevoegen.g.cs
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\Nummer.baml
+C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_WPF\obj\Debug\NummerToevoegen.baml

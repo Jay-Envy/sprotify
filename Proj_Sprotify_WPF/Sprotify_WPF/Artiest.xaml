@@ -6,24 +6,22 @@
         xmlns:local="clr-namespace:Sprotify_WPF"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.Foreground="{DynamicResource MaterialDesignDarkForeground}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Artiest" Height="600" Width="800">
+        Background="{DynamicResource MaterialDesignDarkBackground}"        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Artiest" Height="600" Width="600" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="323*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="322*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -40,7 +38,7 @@
             </Button.Template>
         </Button>-->
 
-        <Image Source="https://icons-for-free.com/iconfiles/png/512/account+circle+24px-131985189042594487.png" Grid.Column="0" Grid.Row="1" Margin="5"/>
+        <Image Source="https://icons-for-free.com/iconfiles/png/512/account+circle+24px-131985189042594487.png" Grid.Column="0" Height="50" Grid.Row="1" Margin="5"/>
         <Button x:Name="btnNewArtist" Style="{DynamicResource MaterialDesignToolButton}" HorizontalAlignment="Right" Content="Artiest toevoegen" Grid.Column="1" Grid.Row="1" Height="50" Margin="5" FontSize="20" Click="ArtiestToevoegen_Click"/>
         <Button Content="{materialDesign:PackIcon Kind=Plus, Size=25 }" ToolTip="Icon" Grid.Row="1" Grid.Column="2" Margin="5" Click="ArtiestToevoegen_Click" />
         <ListBox x:Name="lbArtiesten" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" />

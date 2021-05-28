@@ -3,27 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Sprotify_DAL
 {
     public static class DatabaseOperations
     {
-        //public static List<Nummer> OphalenNummers()
-        //{
-        //    using (SprotifyEntities entities = new SprotifyEntities())
-        //    {
-        //        var query = entities.Nummer;
-        //        return query.ToList();
-        //    }
-        //}
+        //Artiest en Playlist toevoegen
         public static int ToevoegenArtiest(Artiest artiest)
         {
-            using (SprotifyEntities sprotifyEntities = new SprotifyEntities())
+            try
             {
-                sprotifyEntities.Artiest.Add(artiest);
-                return sprotifyEntities.SaveChanges();
+                using (SprotifyEntities sprotifyEntities = new SprotifyEntities())
+                {
+                    sprotifyEntities.Artiest.Add(artiest);
+                    return sprotifyEntities.SaveChanges();
+                }
             }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+
         }
+
+        public static int ToevoegenNummer(Nummer nummer)
+        {
+            try
+            {
+                using (SprotifyEntities sprotifyEntities = new SprotifyEntities())
+                {
+                    sprotifyEntities.Nummer.Add(nummer);
+                    return sprotifyEntities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                throw;
+            }
+
+        }
+
+        //Ophalen
         public static List<Artiest> OphalenArtiesten()
         {
             using (SprotifyEntities entities = new SprotifyEntities())
@@ -39,18 +62,8 @@ namespace Sprotify_DAL
             using (SprotifyEntities entities = new SprotifyEntities())
             {
                 var query = entities.Nummer
-                    .OrderBy(x => x.id)
-                    .ThenBy(x => x.titel);
-                return query.ToList();
-            }
-        }
-        public static List<Playlist> OphalenPlaylists()
-        {
-            using (SprotifyEntities entities = new SprotifyEntities())
-            {
-                var query = entities.Playlist
-                    .OrderBy(x => x.id)
-                    .ThenBy(x => x.naam);
+                    .Include(x => x.ArtiestNummers.Select(sub => sub.Artiest))
+                    .OrderBy(x => x.titel);
                 return query.ToList();
             }
         }
@@ -71,11 +84,33 @@ namespace Sprotify_DAL
             using (SprotifyEntities entities = new SprotifyEntities())
             {
                 var query = entities.ArtiestNummer
-                    .Include("Nummer")
-                    .Include("Artiest")
+                    .Include(x => x.Artiest)
+                    .Include(x=> x.Nummer)
                     .Where(x => x.Artiest.naam.Contains(letters) || x.Nummer.titel.Contains(letters))
                     .OrderBy(x => x.artiestId)
                     .ThenBy(x => x.nummerId);
+                return query.ToList();
+            }
+        }
+        public static List<Nummer> OphalenNummerLengte(string letters)
+        {
+            using (SprotifyEntities entities = new SprotifyEntities())
+            {
+                var query = entities.Nummer
+                    .Where(x => x.titel.Contains(letters))
+                    .OrderBy(x => x.titel);
+                return query.ToList();
+            }
+        }
+
+        public static List<Nummer> ZoekViaNummer(string letters)
+        {
+            using (SprotifyEntities entities = new SprotifyEntities())
+            {
+                var query = entities.Nummer
+                    .Include(x => x.ArtiestNummers.Select(sub => sub.Artiest))
+                    .Where(x => x.titel.Contains(letters))
+                    .OrderBy(x => x.titel);
                 return query.ToList();
             }
         }

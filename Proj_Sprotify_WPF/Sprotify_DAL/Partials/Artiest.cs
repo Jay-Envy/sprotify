@@ -15,7 +15,7 @@ namespace Sprotify_DAL
         {
             get
             {
-                if (columnName == "naam" && !string.IsNullOrWhiteSpace(naam))
+                if (columnName == "naam" && string.IsNullOrWhiteSpace(naam))
                 {
                     return "Naam mag niet leeg zijn!";
                 }
@@ -23,17 +23,18 @@ namespace Sprotify_DAL
                 {
                     return "Maandelijkse luisteraars kunnen niet onder 0!";
                 }
-                if (columnName == "verified" && verified != true || verified != false)
-                {
-                    return "Verified moet een booleaans antwoord hebben!";
-                }
                 return "";
             }
         }
         public override bool Equals(object obj)
         {
-            return obj is Artiest artiest &&
-                naam == artiest.naam;
+            return obj is Artiest a &&
+                naam == a.naam;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

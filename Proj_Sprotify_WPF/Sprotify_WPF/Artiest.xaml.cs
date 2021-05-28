@@ -25,6 +25,11 @@ namespace Sprotify_WPF
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataArtiesten.ItemsSource = DatabaseOperations.OphalenArtiesten();
+        }
+
         private void Home_Click(object sender, RoutedEventArgs e)
         {
 
@@ -44,6 +49,8 @@ namespace Sprotify_WPF
         {
             dataArtiesten.ItemsSource = DatabaseOperations.OphalenArtiesten();
         }
+
+
         //private void BtnOphalenViaWerknemerID_Click(object sender, RoutedEventArgs e)
         //{
         //    if (int.TryParse(txtArtiestID.Text, out int artiestID))

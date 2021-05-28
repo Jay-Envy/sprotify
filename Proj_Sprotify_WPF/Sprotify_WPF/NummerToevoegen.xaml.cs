@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Sprotify_WPF
 {
     /// <summary>
-    /// Interaction logic for PlaylistToevoegen.xaml
+    /// Interaction logic for NummerToevoegen.xaml
     /// </summary>
-    public partial class PlaylistToevoegen : Window
+    public partial class NummerToevoegen : Window
     {
-        public PlaylistToevoegen()
+        public NummerToevoegen()
         {
             InitializeComponent();
         }

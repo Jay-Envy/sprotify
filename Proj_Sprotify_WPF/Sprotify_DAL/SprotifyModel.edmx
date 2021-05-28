@@ -37,7 +37,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="naam" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="aantalNummers" Type="int" Nullable="true" />
           <Property Name="private" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PlaylistNummer">
@@ -161,7 +160,6 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="aantalNummers" Type="Int32" Nullable="false" />
           <Property Name="private" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="PlaylistNummers" Relationship="Self.FK3_playlistId" FromRole="Playlist" ToRole="PlaylistNummer" />
         </EntityType>
@@ -286,7 +284,6 @@
               <MappingFragment StoreEntitySet="Playlist">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="naam" ColumnName="naam" />
-                <ScalarProperty Name="aantalNummers" ColumnName="aantalNummers" />
                 <ScalarProperty Name="private" ColumnName="private" />
               </MappingFragment>
             </EntityTypeMapping>

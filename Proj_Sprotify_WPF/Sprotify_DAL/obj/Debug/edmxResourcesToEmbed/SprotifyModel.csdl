@@ -37,7 +37,6 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="aantalNummers" Type="Int32" Nullable="false" />
     <Property Name="private" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="PlaylistNummers" Relationship="Self.FK3_playlistId" FromRole="Playlist" ToRole="PlaylistNummer" />
   </EntityType>

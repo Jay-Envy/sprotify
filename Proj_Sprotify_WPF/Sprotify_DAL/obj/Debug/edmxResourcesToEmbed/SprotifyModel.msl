@@ -35,7 +35,6 @@
         <MappingFragment StoreEntitySet="Playlist">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="naam" ColumnName="naam" />
-          <ScalarProperty Name="aantalNummers" ColumnName="aantalNummers" />
           <ScalarProperty Name="private" ColumnName="private" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -9,16 +9,21 @@ namespace Sprotify_DAL
 {
     public partial class Nummer:Basisklasse
     {
-        public override string ToString()
+        private TimeSpan span;
+        public TimeSpan Span
         {
-            return this.titel;
+            get { return span; }
+            set
+            {
+                span = TimeSpan.FromSeconds(lengte);
+            }
         }
 
         public override string this[string columnName]
         {
             get
             {
-                if (columnName == "titel" && !string.IsNullOrWhiteSpace(titel))
+                if (columnName == "titel" && string.IsNullOrWhiteSpace(titel))
                 {
                     return "Titel mag niet leeg zijn!";
                 }
@@ -32,6 +37,16 @@ namespace Sprotify_DAL
                 }
                 return "";
             }
+        }
+        public override bool Equals(object obj)
+        {
+            return obj is Nummer n &&
+                titel == n.titel;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
