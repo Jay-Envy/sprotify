@@ -17,18 +17,14 @@ namespace Sprotify_DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Playlist()
         {
-            this.PlaylistGebruikers = new HashSet<PlaylistGebruiker>();
             this.PlaylistNummers = new HashSet<PlaylistNummer>();
         }
     
         public int id { get; set; }
         public string naam { get; set; }
         public int aantalNummers { get; set; }
-        public string eigenaar { get; set; }
         public bool @private { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlaylistGebruiker> PlaylistGebruikers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlaylistNummer> PlaylistNummers { get; set; }
     }

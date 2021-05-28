@@ -17,7 +17,6 @@ namespace Sprotify_DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Artiest()
         {
-            this.AlbumArtiesten = new HashSet<AlbumArtiest>();
             this.ArtiestNummers = new HashSet<ArtiestNummer>();
         }
     
@@ -25,10 +24,7 @@ namespace Sprotify_DAL
         public Nullable<bool> verified { get; set; }
         public int maandelijkseLuisteraars { get; set; }
         public string naam { get; set; }
-        public Nullable<bool> follow { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AlbumArtiest> AlbumArtiesten { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArtiestNummer> ArtiestNummers { get; set; }
     }

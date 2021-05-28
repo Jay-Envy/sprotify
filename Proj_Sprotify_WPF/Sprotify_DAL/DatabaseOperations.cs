@@ -16,6 +16,14 @@ namespace Sprotify_DAL
         //        return query.ToList();
         //    }
         //}
+        public static int ToevoegenArtiest(Artiest artiest)
+        {
+            using (SprotifyEntities sprotifyEntities = new SprotifyEntities())
+            {
+                sprotifyEntities.Artiest.Add(artiest);
+                return sprotifyEntities.SaveChanges();
+            }
+        }
         public static List<Artiest> OphalenArtiesten()
         {
             using (SprotifyEntities entities = new SprotifyEntities())
@@ -58,14 +66,14 @@ namespace Sprotify_DAL
             }
         }
 
-        public static List<ArtiestNummer> OphalenArtiestNummer(string letter)
+        public static List<ArtiestNummer> OphalenArtiestNummer(string letters)
         {
             using (SprotifyEntities entities = new SprotifyEntities())
             {
                 var query = entities.ArtiestNummer
                     .Include("Nummer")
                     .Include("Artiest")
-                    .Where(x => x.Artiest.naam.Contains(letter) || x.Nummer.titel.Contains(letter))
+                    .Where(x => x.Artiest.naam.Contains(letters) || x.Nummer.titel.Contains(letters))
                     .OrderBy(x => x.artiestId)
                     .ThenBy(x => x.nummerId);
                 return query.ToList();

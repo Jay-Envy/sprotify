@@ -45,8 +45,12 @@
         <Button Content="{materialDesign:PackIcon Kind=Plus, Size=25 }" ToolTip="Icon" Grid.Row="1" Grid.Column="2" Margin="5" Click="ArtiestToevoegen_Click" />
         <ListBox x:Name="lbArtiesten" Grid.Row="2" Grid.ColumnSpan="3" Margin="5" />
 
-        <DataGrid x:Name="dataArtiesten" AutoGenerateColumns="True" Grid.Column="1" Grid.Row="2">
-            
+        <DataGrid x:Name="dataArtiesten" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="2" Grid.RowSpan="4" Grid.ColumnSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding naam}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding maandelijkseLuisteraars}" Header="Maandelijkse Luisteraars"/>
+                <DataGridTextColumn Binding="{Binding verified}" Header="Verified"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>

@@ -18,29 +18,17 @@ namespace Sprotify_DAL
         public Nummer()
         {
             this.ArtiestNummers = new HashSet<ArtiestNummer>();
-            this.Comments = new HashSet<Comment>();
             this.PlaylistNummers = new HashSet<PlaylistNummer>();
-            this.NummerGenres = new HashSet<NummerGenre>();
         }
     
         public int id { get; set; }
         public string titel { get; set; }
         public int aantalKeerGespeeld { get; set; }
         public int lengte { get; set; }
-        public string regio { get; set; }
-        public Nullable<bool> like { get; set; }
-        public int albumId { get; set; }
-        public int sourceId { get; set; }
     
-        public virtual Album Album { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArtiestNummer> ArtiestNummers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlaylistNummer> PlaylistNummers { get; set; }
-        public virtual Source Source { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NummerGenre> NummerGenres { get; set; }
     }
 }

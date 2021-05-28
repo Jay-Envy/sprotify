@@ -25,19 +25,10 @@ namespace Sprotify_DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Album> Album { get; set; }
-        public virtual DbSet<AlbumArtiest> AlbumArtiest { get; set; }
-        public virtual DbSet<AlbumGenre> AlbumGenre { get; set; }
         public virtual DbSet<Artiest> Artiest { get; set; }
         public virtual DbSet<ArtiestNummer> ArtiestNummer { get; set; }
-        public virtual DbSet<Comment> Comment { get; set; }
-        public virtual DbSet<Gebruiker> Gebruiker { get; set; }
-        public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<Nummer> Nummer { get; set; }
-        public virtual DbSet<NummerGenre> NummerGenre { get; set; }
         public virtual DbSet<Playlist> Playlist { get; set; }
-        public virtual DbSet<PlaylistGebruiker> PlaylistGebruiker { get; set; }
         public virtual DbSet<PlaylistNummer> PlaylistNummer { get; set; }
-        public virtual DbSet<Source> Source { get; set; }
     }
 }

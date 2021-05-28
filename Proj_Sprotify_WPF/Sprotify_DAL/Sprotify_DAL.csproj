@@ -53,51 +53,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Album.cs">
-      <DependentUpon>SprotifyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AlbumArtiest.cs">
-      <DependentUpon>SprotifyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AlbumGenre.cs">
-      <DependentUpon>SprotifyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Artiest.cs">
       <DependentUpon>SprotifyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ArtiestNummer.cs">
       <DependentUpon>SprotifyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Comment.cs">
-      <DependentUpon>SprotifyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseOperations.cs" />
     <Compile Include="FileOperations.cs" />
-    <Compile Include="Gebruiker.cs">
-      <DependentUpon>SprotifyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Genre.cs">
-      <DependentUpon>SprotifyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Nummer.cs">
       <DependentUpon>SprotifyModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="NummerGenre.cs">
-      <DependentUpon>SprotifyModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Partials\Artiest.cs" />
+    <Compile Include="Partials\Nummer.cs" />
+    <Compile Include="Partials\Playlist.cs" />
     <Compile Include="Playlist.cs">
-      <DependentUpon>SprotifyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PlaylistGebruiker.cs">
       <DependentUpon>SprotifyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PlaylistNummer.cs">
       <DependentUpon>SprotifyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source.cs">
-      <DependentUpon>SprotifyModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SprotifyModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

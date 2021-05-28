@@ -51,10 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Playlist.cs" />
-    <Compile Include="Collectie.cs" />
-    <Compile Include="Artiest.cs" />
-    <Compile Include="Nummer.cs" />
+    <Compile Include="Basisklasse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

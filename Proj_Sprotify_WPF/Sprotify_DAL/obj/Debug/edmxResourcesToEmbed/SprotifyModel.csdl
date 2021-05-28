@@ -1,37 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SprotifyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Album">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="naam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="jaar" Type="Int32" Nullable="false" />
-    <Property Name="like" Type="Boolean" />
-    <NavigationProperty Name="AlbumArtiests" Relationship="Self.FK11_albumId" FromRole="Album" ToRole="AlbumArtiest" />
-    <NavigationProperty Name="Nummers" Relationship="Self.FK5_albumId" FromRole="Album" ToRole="Nummer" />
-    <NavigationProperty Name="AlbumGenres" Relationship="Self.FK9_albumId" FromRole="Album" ToRole="AlbumGenre" />
-  </EntityType>
-  <EntityType Name="AlbumArtiest">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="albumId" Type="Int32" Nullable="false" />
-    <Property Name="artiestId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Album" Relationship="Self.FK11_albumId" FromRole="AlbumArtiest" ToRole="Album" />
-    <NavigationProperty Name="Artiest" Relationship="Self.FK12_artiestId" FromRole="AlbumArtiest" ToRole="Artiest" />
-  </EntityType>
-  <EntityType Name="AlbumGenre">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="albumId" Type="Int32" Nullable="false" />
-    <Property Name="genreId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Album" Relationship="Self.FK9_albumId" FromRole="AlbumGenre" ToRole="Album" />
-    <NavigationProperty Name="Genre" Relationship="Self.FK10_genreId" FromRole="AlbumGenre" ToRole="Genre" />
-  </EntityType>
   <EntityType Name="Artiest">
     <Key>
       <PropertyRef Name="id" />
@@ -40,8 +8,6 @@
     <Property Name="verified" Type="Boolean" />
     <Property Name="maandelijkseLuisteraars" Type="Int32" Nullable="false" />
     <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="follow" Type="Boolean" />
-    <NavigationProperty Name="AlbumArtiesten" Relationship="Self.FK12_artiestId" FromRole="Artiest" ToRole="AlbumArtiest" />
     <NavigationProperty Name="ArtiestNummers" Relationship="Self.FK13_artiestId" FromRole="Artiest" ToRole="ArtiestNummer" />
   </EntityType>
   <EntityType Name="ArtiestNummer">
@@ -54,42 +20,6 @@
     <NavigationProperty Name="Artiest" Relationship="Self.FK13_artiestId" FromRole="ArtiestNummer" ToRole="Artiest" />
     <NavigationProperty Name="Nummer" Relationship="Self.FK14_nummerId" FromRole="ArtiestNummer" ToRole="Nummer" />
   </EntityType>
-  <EntityType Name="Comment">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AantalLikes" Type="Int32" Nullable="false" />
-    <Property Name="Comment1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="nummerId" Type="Int32" Nullable="false" />
-    <Property Name="gebruikerId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Nummer" Relationship="Self.FK15_nummerId" FromRole="Comment" ToRole="Nummer" />
-    <NavigationProperty Name="Gebruiker" Relationship="Self.FK16_gebruikerId" FromRole="Comment" ToRole="Gebruiker" />
-  </EntityType>
-  <EntityType Name="Gebruiker">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="achternaam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="emailadres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="telefoonnummer" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
-    <Property Name="geboortedatum" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="wachtwoord" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="geslacht" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-    <NavigationProperty Name="Comments" Relationship="Self.FK16_gebruikerId" FromRole="Gebruiker" ToRole="Comment" />
-    <NavigationProperty Name="PlaylistGebruikers" Relationship="Self.FK1_gebruikerId" FromRole="Gebruiker" ToRole="PlaylistGebruiker" />
-  </EntityType>
-  <EntityType Name="Genre">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="AlbumGenres" Relationship="Self.FK10_genreId" FromRole="Genre" ToRole="AlbumGenre" />
-    <NavigationProperty Name="NummerGenres" Relationship="Self.FK8_genreId" FromRole="Genre" ToRole="NummerGenre" />
-  </EntityType>
   <EntityType Name="Nummer">
     <Key>
       <PropertyRef Name="id" />
@@ -98,26 +28,8 @@
     <Property Name="titel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="aantalKeerGespeeld" Type="Int32" Nullable="false" />
     <Property Name="lengte" Type="Int32" Nullable="false" />
-    <Property Name="regio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="like" Type="Boolean" />
-    <Property Name="albumId" Type="Int32" Nullable="false" />
-    <Property Name="sourceId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Album" Relationship="Self.FK5_albumId" FromRole="Nummer" ToRole="Album" />
     <NavigationProperty Name="ArtiestNummers" Relationship="Self.FK14_nummerId" FromRole="Nummer" ToRole="ArtiestNummer" />
-    <NavigationProperty Name="Comments" Relationship="Self.FK15_nummerId" FromRole="Nummer" ToRole="Comment" />
     <NavigationProperty Name="PlaylistNummers" Relationship="Self.FK4_nummerId" FromRole="Nummer" ToRole="PlaylistNummer" />
-    <NavigationProperty Name="Source" Relationship="Self.FK6_sourceId" FromRole="Nummer" ToRole="Source" />
-    <NavigationProperty Name="NummerGenres" Relationship="Self.FK7_nummerId" FromRole="Nummer" ToRole="NummerGenre" />
-  </EntityType>
-  <EntityType Name="NummerGenre">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nummerId" Type="Int32" Nullable="false" />
-    <Property Name="genreId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Genre" Relationship="Self.FK8_genreId" FromRole="NummerGenre" ToRole="Genre" />
-    <NavigationProperty Name="Nummer" Relationship="Self.FK7_nummerId" FromRole="NummerGenre" ToRole="Nummer" />
   </EntityType>
   <EntityType Name="Playlist">
     <Key>
@@ -126,20 +38,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="aantalNummers" Type="Int32" Nullable="false" />
-    <Property Name="eigenaar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="private" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="PlaylistGebruikers" Relationship="Self.FK2_playlistId" FromRole="Playlist" ToRole="PlaylistGebruiker" />
     <NavigationProperty Name="PlaylistNummers" Relationship="Self.FK3_playlistId" FromRole="Playlist" ToRole="PlaylistNummer" />
-  </EntityType>
-  <EntityType Name="PlaylistGebruiker">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="gebruikerId" Type="Int32" Nullable="false" />
-    <Property Name="playlistId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Gebruiker" Relationship="Self.FK1_gebruikerId" FromRole="PlaylistGebruiker" ToRole="Gebruiker" />
-    <NavigationProperty Name="Playlist" Relationship="Self.FK2_playlistId" FromRole="PlaylistGebruiker" ToRole="Playlist" />
   </EntityType>
   <EntityType Name="PlaylistNummer">
     <Key>
@@ -151,75 +51,6 @@
     <NavigationProperty Name="Nummer" Relationship="Self.FK4_nummerId" FromRole="PlaylistNummer" ToRole="Nummer" />
     <NavigationProperty Name="Playlist" Relationship="Self.FK3_playlistId" FromRole="PlaylistNummer" ToRole="Playlist" />
   </EntityType>
-  <EntityType Name="Source">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="naam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="locatie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Nummers" Relationship="Self.FK6_sourceId" FromRole="Source" ToRole="Nummer" />
-  </EntityType>
-  <Association Name="FK11_albumId">
-    <End Role="Album" Type="Self.Album" Multiplicity="1" />
-    <End Role="AlbumArtiest" Type="Self.AlbumArtiest" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Album">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="AlbumArtiest">
-        <PropertyRef Name="albumId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK5_albumId">
-    <End Role="Album" Type="Self.Album" Multiplicity="1" />
-    <End Role="Nummer" Type="Self.Nummer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Album">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Nummer">
-        <PropertyRef Name="albumId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK9_albumId">
-    <End Role="Album" Type="Self.Album" Multiplicity="1" />
-    <End Role="AlbumGenre" Type="Self.AlbumGenre" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Album">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="AlbumGenre">
-        <PropertyRef Name="albumId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK12_artiestId">
-    <End Role="Artiest" Type="Self.Artiest" Multiplicity="1" />
-    <End Role="AlbumArtiest" Type="Self.AlbumArtiest" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Artiest">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="AlbumArtiest">
-        <PropertyRef Name="artiestId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK10_genreId">
-    <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
-    <End Role="AlbumGenre" Type="Self.AlbumGenre" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Genre">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="AlbumGenre">
-        <PropertyRef Name="genreId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK13_artiestId">
     <End Role="Artiest" Type="Self.Artiest" Multiplicity="1" />
     <End Role="ArtiestNummer" Type="Self.ArtiestNummer" Multiplicity="*" />
@@ -244,54 +75,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK15_nummerId">
-    <End Role="Nummer" Type="Self.Nummer" Multiplicity="1" />
-    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Nummer">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="nummerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK16_gebruikerId">
-    <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="1" />
-    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Gebruiker">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Comment">
-        <PropertyRef Name="gebruikerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK1_gebruikerId">
-    <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="1" />
-    <End Role="PlaylistGebruiker" Type="Self.PlaylistGebruiker" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Gebruiker">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="PlaylistGebruiker">
-        <PropertyRef Name="gebruikerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK8_genreId">
-    <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
-    <End Role="NummerGenre" Type="Self.NummerGenre" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Genre">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="NummerGenre">
-        <PropertyRef Name="genreId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK4_nummerId">
     <End Role="Nummer" Type="Self.Nummer" Multiplicity="1" />
     <End Role="PlaylistNummer" Type="Self.PlaylistNummer" Multiplicity="*" />
@@ -301,46 +84,6 @@
       </Principal>
       <Dependent Role="PlaylistNummer">
         <PropertyRef Name="nummerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK6_sourceId">
-    <End Role="Source" Type="Self.Source" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Nummer" Type="Self.Nummer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Source">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Nummer">
-        <PropertyRef Name="sourceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK7_nummerId">
-    <End Role="Nummer" Type="Self.Nummer" Multiplicity="1" />
-    <End Role="NummerGenre" Type="Self.NummerGenre" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Nummer">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="NummerGenre">
-        <PropertyRef Name="nummerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK2_playlistId">
-    <End Role="Playlist" Type="Self.Playlist" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="PlaylistGebruiker" Type="Self.PlaylistGebruiker" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Playlist">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="PlaylistGebruiker">
-        <PropertyRef Name="playlistId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -357,40 +100,11 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="SprotifyEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Album" EntityType="Self.Album" />
-    <EntitySet Name="AlbumArtiest" EntityType="Self.AlbumArtiest" />
-    <EntitySet Name="AlbumGenre" EntityType="Self.AlbumGenre" />
     <EntitySet Name="Artiest" EntityType="Self.Artiest" />
     <EntitySet Name="ArtiestNummer" EntityType="Self.ArtiestNummer" />
-    <EntitySet Name="Comment" EntityType="Self.Comment" />
-    <EntitySet Name="Gebruiker" EntityType="Self.Gebruiker" />
-    <EntitySet Name="Genre" EntityType="Self.Genre" />
     <EntitySet Name="Nummer" EntityType="Self.Nummer" />
-    <EntitySet Name="NummerGenre" EntityType="Self.NummerGenre" />
     <EntitySet Name="Playlist" EntityType="Self.Playlist" />
-    <EntitySet Name="PlaylistGebruiker" EntityType="Self.PlaylistGebruiker" />
     <EntitySet Name="PlaylistNummer" EntityType="Self.PlaylistNummer" />
-    <EntitySet Name="Source" EntityType="Self.Source" />
-    <AssociationSet Name="FK11_albumId" Association="Self.FK11_albumId">
-      <End Role="Album" EntitySet="Album" />
-      <End Role="AlbumArtiest" EntitySet="AlbumArtiest" />
-    </AssociationSet>
-    <AssociationSet Name="FK5_albumId" Association="Self.FK5_albumId">
-      <End Role="Album" EntitySet="Album" />
-      <End Role="Nummer" EntitySet="Nummer" />
-    </AssociationSet>
-    <AssociationSet Name="FK9_albumId" Association="Self.FK9_albumId">
-      <End Role="Album" EntitySet="Album" />
-      <End Role="AlbumGenre" EntitySet="AlbumGenre" />
-    </AssociationSet>
-    <AssociationSet Name="FK12_artiestId" Association="Self.FK12_artiestId">
-      <End Role="Artiest" EntitySet="Artiest" />
-      <End Role="AlbumArtiest" EntitySet="AlbumArtiest" />
-    </AssociationSet>
-    <AssociationSet Name="FK10_genreId" Association="Self.FK10_genreId">
-      <End Role="Genre" EntitySet="Genre" />
-      <End Role="AlbumGenre" EntitySet="AlbumGenre" />
-    </AssociationSet>
     <AssociationSet Name="FK13_artiestId" Association="Self.FK13_artiestId">
       <End Role="Artiest" EntitySet="Artiest" />
       <End Role="ArtiestNummer" EntitySet="ArtiestNummer" />
@@ -399,37 +113,9 @@
       <End Role="Nummer" EntitySet="Nummer" />
       <End Role="ArtiestNummer" EntitySet="ArtiestNummer" />
     </AssociationSet>
-    <AssociationSet Name="FK15_nummerId" Association="Self.FK15_nummerId">
-      <End Role="Nummer" EntitySet="Nummer" />
-      <End Role="Comment" EntitySet="Comment" />
-    </AssociationSet>
-    <AssociationSet Name="FK16_gebruikerId" Association="Self.FK16_gebruikerId">
-      <End Role="Gebruiker" EntitySet="Gebruiker" />
-      <End Role="Comment" EntitySet="Comment" />
-    </AssociationSet>
-    <AssociationSet Name="FK1_gebruikerId" Association="Self.FK1_gebruikerId">
-      <End Role="Gebruiker" EntitySet="Gebruiker" />
-      <End Role="PlaylistGebruiker" EntitySet="PlaylistGebruiker" />
-    </AssociationSet>
-    <AssociationSet Name="FK8_genreId" Association="Self.FK8_genreId">
-      <End Role="Genre" EntitySet="Genre" />
-      <End Role="NummerGenre" EntitySet="NummerGenre" />
-    </AssociationSet>
     <AssociationSet Name="FK4_nummerId" Association="Self.FK4_nummerId">
       <End Role="Nummer" EntitySet="Nummer" />
       <End Role="PlaylistNummer" EntitySet="PlaylistNummer" />
-    </AssociationSet>
-    <AssociationSet Name="FK6_sourceId" Association="Self.FK6_sourceId">
-      <End Role="Source" EntitySet="Source" />
-      <End Role="Nummer" EntitySet="Nummer" />
-    </AssociationSet>
-    <AssociationSet Name="FK7_nummerId" Association="Self.FK7_nummerId">
-      <End Role="Nummer" EntitySet="Nummer" />
-      <End Role="NummerGenre" EntitySet="NummerGenre" />
-    </AssociationSet>
-    <AssociationSet Name="FK2_playlistId" Association="Self.FK2_playlistId">
-      <End Role="Playlist" EntitySet="Playlist" />
-      <End Role="PlaylistGebruiker" EntitySet="PlaylistGebruiker" />
     </AssociationSet>
     <AssociationSet Name="FK3_playlistId" Association="Self.FK3_playlistId">
       <End Role="Playlist" EntitySet="Playlist" />

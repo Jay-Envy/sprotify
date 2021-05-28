@@ -18,14 +18,25 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Image Source="https://icons-for-free.com/iconfiles/png/512/account+circle+24px-131985189042594487.png" Grid.Column="0" Grid.RowSpan="2" Width="75" Height="75" Margin="5"/>
-        <TextBox x:Name="txtArtiestNaam" Grid.Row="0" Grid.Column="1" Margin="5" materialDesign:HintAssist.Hint="Artiest Naam" />
-        <Button x:Name="btnArtiestToevoegen" Grid.Row="1" Grid.Column="1" Margin="5" Content="Artiest toevoegen" />
+        <TextBox x:Name="txtArtiestNaam" Grid.Row="0" Grid.Column="1" Margin="5" materialDesign:HintAssist.Hint="Artiest Naam" Grid.ColumnSpan="2" />
+        <TextBox x:Name="txtArtiestMaand" Grid.Row="1" Grid.Column="1" Margin="5" materialDesign:HintAssist.Hint="Maandelijkse luisteraars" />
+        <TextBox x:Name="txtArtiestVerified" Grid.Row="1" Grid.Column="2" Margin="5" materialDesign:HintAssist.Hint="Verified" />
+        <!--<DataGrid x:Name="dataAdd" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="5" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naam" Binding="{Binding naam}" />
+                <DataGridTextColumn Header="Maandelijkse luisteraars" Binding="{Binding maandelijkseLuisteraars}" />
+                <DataGridTextColumn Header="Verified" Binding="{Binding verified}" />
+                <DataGridTextColumn Header="Following" Binding="{Binding follow}" />
+            </DataGrid.Columns>
+        </DataGrid>-->
+        <Button x:Name="btnArtiestToevoegen" Grid.Row="2" Grid.Column="0" Margin="5" Content="Toevoegen" Click="Toevoegen_Click" />
     </Grid>
 </Window>
