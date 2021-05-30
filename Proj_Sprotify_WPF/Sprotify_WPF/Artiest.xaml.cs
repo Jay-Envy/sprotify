@@ -182,7 +182,7 @@ namespace Sprotify_WPF
             {
                 return "Naam mag niet leeg zijn!" + Environment.NewLine;
             }
-            else if (columnName == "txtMaand" && int.TryParse(txtMaand.Text, out int maand))
+            else if (columnName == "txtMaand" && !int.TryParse(txtMaand.Text, out int maand))
             {
                 return "Maandelijkse luisteraars moet een numerieke waarde zijn!" + Environment.NewLine;
             }

@@ -85,7 +85,7 @@ namespace Sprotify_WPF
         }
 
 
-        //Update/Delete bij nummer werkt spijtig genoeg niet. Ik geloof dat dit te maken heeft met de connectie met artiest
+        //De datagrid geeft spijtig genoeg niet de juiste data weer. Ook al worden nummers aangepast / toegevoegd (zie data via SQL object explorer), deze worden niet weergegeven
         private void UpdateData_Click(object sender, RoutedEventArgs e)
         {
             string foutmelding = Valideer("Nummer");
@@ -96,20 +96,20 @@ namespace Sprotify_WPF
             foutmelding += Valideer("cmbArtiest");
             if (string.IsNullOrWhiteSpace(foutmelding))
             {
-                if (dataSearch.SelectedItem is Sprotify_DAL.Nummer nummer)
+                if (dataSearch.SelectedItem is Sprotify_DAL.ArtiestNummer an)
                 {
-                    nummer.titel = txtTitel.Text;
-                    nummer.genre = txtGenre.Text;
-                    nummer.lengte = int.Parse(txtLengte.Text);
-                    nummer.platenMaatschappij = txtPlaten.Text;
-                    nummer.regio = txtRegio.Text;
+                    an.Nummer.titel = txtTitel.Text;
+                    an.Nummer.genre = txtGenre.Text;
+                    an.Nummer.lengte = int.Parse(txtLengte.Text);
+                    an.Nummer.platenMaatschappij = txtPlaten.Text;
+                    an.Nummer.regio = txtRegio.Text;
 
-                    if (nummer.IsGeldig())
+                    if (an.Nummer.IsGeldig())
                     {
-                        int ok = DatabaseOperations.AanpassenNummer(nummer);
+                        int ok = DatabaseOperations.AanpassenNummer(an);
                         if (ok <= 0)
                         {
-                            MessageBox.Show($"Nummer {nummer.titel} is niet gewijzigd.");
+                            MessageBox.Show($"Nummer {an.Nummer.titel} is niet gewijzigd.");
                         }
                         else
                         {
@@ -119,7 +119,7 @@ namespace Sprotify_WPF
                     }
                     else
                     {
-                        MessageBox.Show(nummer.Error);
+                        MessageBox.Show(an.Nummer.Error);
                     }
                 }
             }
@@ -134,15 +134,15 @@ namespace Sprotify_WPF
             string foutmeldingen = Valideer("Nummer");
             if (string.IsNullOrWhiteSpace(foutmeldingen))
             {
-                Sprotify_DAL.Nummer nummer = dataSearch.SelectedItem as Sprotify_DAL.Nummer;
-                int ok = DatabaseOperations.VerwijderenNummer(nummer);
+                Sprotify_DAL.ArtiestNummer an = dataSearch.SelectedItem as Sprotify_DAL.ArtiestNummer;
+                int ok = DatabaseOperations.VerwijderenNummer(an);
                 if(ok > 0)
                 {
                     dataSearch.ItemsSource = DatabaseOperations.OphalenArtiestNummer();
                 }
                 else
                 {
-                    MessageBox.Show($"{nummer.titel} is niet verwijderd.");
+                    MessageBox.Show($"{an.Nummer.titel} is niet verwijderd.");
                 }
             }
             else
@@ -205,13 +205,13 @@ namespace Sprotify_WPF
 
         private void DataSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dataSearch.SelectedItem is Sprotify_DAL.Nummer nummer)
+            if (dataSearch.SelectedItem is Sprotify_DAL.ArtiestNummer an)
             {
-                txtTitel.Text = nummer.titel;
-                txtGenre.Text = nummer.genre;
-                txtLengte.Text = nummer.lengte.ToString();
-                txtPlaten.Text = nummer.platenMaatschappij;
-                txtRegio.Text = nummer.regio;
+                txtTitel.Text = an.Nummer.titel;
+                txtGenre.Text = an.Nummer.genre;
+                txtLengte.Text = an.Nummer.lengte.ToString();
+                txtPlaten.Text = an.Nummer.platenMaatschappij;
+                txtRegio.Text = an.Nummer.regio;
                 //cmbArtiest.IsEnabled = false;
                 cmbArtiest.ItemsSource = DatabaseOperations.OphalenArtiesten();
             }
@@ -232,7 +232,7 @@ namespace Sprotify_WPF
             {
                 return "Genre mag niet leeg zijn!" + Environment.NewLine;
             }
-            else if (columnName == "txtLengte" && int.TryParse(txtLengte.Text, out int lengte))
+            else if (columnName == "txtLengte" && !int.TryParse(txtLengte.Text, out int lengte))
             {
                 return "Lengte moet een numerieke waarde zijn!" + Environment.NewLine;
             }

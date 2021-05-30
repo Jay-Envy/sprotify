@@ -47,13 +47,13 @@ namespace Sprotify_DAL
         }
 
         //Verwijderen
-        public static int VerwijderenNummer(Nummer nummer)
+        public static int VerwijderenNummer(ArtiestNummer an)
         {
             try
             {
                 using (SprotifyEntities entities = new SprotifyEntities())
                 {
-                    entities.Entry(nummer).State = EntityState.Deleted;
+                    entities.Entry(an).State = EntityState.Deleted;
                     return entities.SaveChanges();
                 }
             }
@@ -81,11 +81,11 @@ namespace Sprotify_DAL
         }
 
         //Aanpassen
-        public static int AanpassenNummer(Nummer nummer)
+        public static int AanpassenNummer(ArtiestNummer an)
         {
             using (SprotifyEntities entities = new SprotifyEntities())
             {
-                entities.Entry(nummer).State = EntityState.Modified;
+                entities.Entry(an).State = EntityState.Modified;
                 return entities.SaveChanges();
             }
         }

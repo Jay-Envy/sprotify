@@ -45,7 +45,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Nummer.titel}" Header="Titel"/>
                 <DataGridTextColumn Binding="{Binding Artiest.naam}" Header="Artiest"/>
-                <DataGridTextColumn Binding="{Binding Nummer.Span, StringFormat=mm\\:ss}" Header="Lengte"/>
+                <DataGridTextColumn Binding="{Binding Nummer.lengte}" Header="Lengte"/>
+                <!--<DataGridTextColumn Binding="{Binding Nummer.Span, StringFormat=mm\\:ss}" Header="Lengte"/>-->
                 <DataGridTextColumn Binding="{Binding Nummer.genre}" Header="Genre"/>
                 <DataGridTextColumn Binding="{Binding Nummer.regio}" Header="Regio"/>
                 <DataGridTextColumn Binding="{Binding Nummer.platenMaatschappij}" Header="Platenmaatschappij"/>
