@@ -9,7 +9,7 @@ namespace Sprotify_DAL
 {
     public static class DatabaseOperations
     {
-        //Artiest en Playlist toevoegen
+        //Toevoegen
         public static int ToevoegenArtiest(Artiest artiest)
         {
             try
@@ -41,12 +41,67 @@ namespace Sprotify_DAL
             catch (Exception ex)
             {
                 FileOperations.FoutLoggen(ex);
-                throw;
+                return 0;
             }
 
         }
 
+        //Verwijderen
+        public static int VerwijderenNummer(Nummer nummer)
+        {
+            try
+            {
+                using (SprotifyEntities entities = new SprotifyEntities())
+                {
+                    entities.Entry(nummer).State = EntityState.Deleted;
+                    return entities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+        public static int VerwijderenArtiest(Artiest artiest)
+        {
+            try
+            {
+                using (SprotifyEntities entities = new SprotifyEntities())
+                {
+                    entities.Entry(artiest).State = EntityState.Deleted;
+                    return entities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        //Aanpassen
+        public static int AanpassenNummer(Nummer nummer)
+        {
+            using (SprotifyEntities entities = new SprotifyEntities())
+            {
+                entities.Entry(nummer).State = EntityState.Modified;
+                return entities.SaveChanges();
+            }
+        }
+
+        public static int AanpassenArtiest(Artiest artiest)
+        {
+            using (SprotifyEntities entities = new SprotifyEntities())
+            {
+                entities.Entry(artiest).State = EntityState.Modified;
+                return entities.SaveChanges();
+            }
+        }
+
         //Ophalen
+
+        //Artiest.xaml
         public static List<Artiest> OphalenArtiesten()
         {
             using (SprotifyEntities entities = new SprotifyEntities())
@@ -57,62 +112,36 @@ namespace Sprotify_DAL
                 return query.ToList();
             }
         }
-        public static List<Nummer> OphalenNummers()
-        {
-            using (SprotifyEntities entities = new SprotifyEntities())
-            {
-                var query = entities.Nummer
-                    .Include(x => x.ArtiestNummers.Select(sub => sub.Artiest))
-                    .OrderBy(x => x.titel);
-                return query.ToList();
-            }
-        }
-        public static List<Artiest> OphalenArtiestViaZoek(int cijfer)
-        {
-            using (SprotifyEntities entities = new SprotifyEntities())
-            {
-                var query = entities.Artiest
-                    .Where(x => x.naam.Contains(cijfer.ToString()))
-                    .OrderBy(x => x.maandelijkseLuisteraars)
-                    .ThenBy(x => x.id);
-                return query.ToList();
-            }
-        }
 
-        public static List<ArtiestNummer> OphalenArtiestNummer(string letters)
+        //Nummer.xaml
+        public static List<ArtiestNummer> OphalenArtiestNummerViaContains(string letters)
         {
             using (SprotifyEntities entities = new SprotifyEntities())
             {
                 var query = entities.ArtiestNummer
                     .Include(x => x.Artiest)
                     .Include(x=> x.Nummer)
-                    .Where(x => x.Artiest.naam.Contains(letters) || x.Nummer.titel.Contains(letters))
+                    .Where(x => x.Artiest.naam.Contains(letters) || x.Nummer.titel.Contains(letters)
+                    && x.artiestId == x.Artiest.id && x.nummerId == x.Nummer.id)
                     .OrderBy(x => x.artiestId)
                     .ThenBy(x => x.nummerId);
                 return query.ToList();
             }
         }
-        public static List<Nummer> OphalenNummerLengte(string letters)
+        //Nummer.xaml
+        public static List<ArtiestNummer> OphalenArtiestNummer()
         {
             using (SprotifyEntities entities = new SprotifyEntities())
             {
-                var query = entities.Nummer
-                    .Where(x => x.titel.Contains(letters))
-                    .OrderBy(x => x.titel);
+                var query = entities.ArtiestNummer
+                    .Include(x => x.Artiest)
+                    .Include(x => x.Nummer)
+                    .Where(x => x.artiestId == x.Artiest.id && x.nummerId == x.Nummer.id)
+                    .OrderBy(x => x.artiestId)
+                    .ThenBy(x => x.nummerId);
                 return query.ToList();
             }
         }
 
-        public static List<Nummer> ZoekViaNummer(string letters)
-        {
-            using (SprotifyEntities entities = new SprotifyEntities())
-            {
-                var query = entities.Nummer
-                    .Include(x => x.ArtiestNummers.Select(sub => sub.Artiest))
-                    .Where(x => x.titel.Contains(letters))
-                    .OrderBy(x => x.titel);
-                return query.ToList();
-            }
-        }
     }
 }

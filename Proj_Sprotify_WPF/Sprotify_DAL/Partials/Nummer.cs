@@ -35,13 +35,25 @@ namespace Sprotify_DAL
                 {
                     return "Aantal keer gespeeld kan niet onder 0!";
                 }
+                if (columnName == "genre" && string.IsNullOrWhiteSpace(genre))
+                {
+                    return "Het genre mag niet leeg zijn!";
+                }
+                if (columnName == "regio" && string.IsNullOrWhiteSpace(regio))
+                {
+                    return "De regio mag niet leeg zijn!";
+                }
+                if (columnName == "platenMaatschappij" && string.IsNullOrWhiteSpace(platenMaatschappij))
+                {
+                    return "De platenmaatschappij mag niet leeg zijn!";
+                }
                 return "";
             }
         }
         public override bool Equals(object obj)
         {
             return obj is Nummer n &&
-                titel == n.titel;
+                id == n.id;
         }
 
         public override int GetHashCode()

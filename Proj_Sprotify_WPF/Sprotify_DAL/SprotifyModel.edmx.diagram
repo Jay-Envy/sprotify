@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="39fea53c85074352b91b1bb206e598db" Name="Diagram1" ZoomLevel="99">
-        <EntityTypeShape EntityType="SprotifyModel.Artiest" Width="1.5" PointX="8.125" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SprotifyModel.ArtiestNummer" Width="1.5" PointX="10.125" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SprotifyModel.Nummer" Width="1.5" PointX="12" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="SprotifyModel.Playlist" Width="1.5" PointX="15.875" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SprotifyModel.PlaylistNummer" Width="1.5" PointX="13.875" PointY="8.625" IsExpanded="true" />
-        <AssociationConnector Association="SprotifyModel.FK13_artiestId" ManuallyRouted="false" />
-        <AssociationConnector Association="SprotifyModel.FK14_nummerId" ManuallyRouted="false" />
-        <AssociationConnector Association="SprotifyModel.FK4_nummerId" ManuallyRouted="false" />
-        <AssociationConnector Association="SprotifyModel.FK3_playlistId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SprotifyModel.Artiest" Width="1.5" PointX="3.125" PointY="4.375" />
+        <EntityTypeShape EntityType="SprotifyModel.ArtiestNummer" Width="1.5" PointX="5.5" PointY="4.375" />
+        <EntityTypeShape EntityType="SprotifyModel.Nummer" Width="1.5" PointX="8" PointY="3.5" />
+        <EntityTypeShape EntityType="SprotifyModel.Playlist" Width="1.5" PointX="12.75" PointY="4.375" />
+        <EntityTypeShape EntityType="SprotifyModel.PlaylistNummer" Width="1.5" PointX="10.5" PointY="4.375" />
+        <AssociationConnector Association="SprotifyModel.FK13_artiestId" />
+        <AssociationConnector Association="SprotifyModel.FK14_nummerId" />
+        <AssociationConnector Association="SprotifyModel.FK4_nummerId" />
+        <AssociationConnector Association="SprotifyModel.FK3_playlistId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

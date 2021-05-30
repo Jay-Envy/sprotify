@@ -23,17 +23,21 @@ namespace Sprotify_UnitTests
         }
 
         [TestMethod]
-        public void PlaylistKrijgtJuisteInput()
+        public void MagRegioNullZijn()
         {
-            //Nieuwe playlist aanmaken, private is een bool
-            Playlist p = new Playlist
+            //Nieuw nummer aanmaken, regio niet invullen
+            Nummer n = new Nummer
             {
-                naam = "Test",
-                @private = bool.TryParse("true", out bool boolJuist)
+                titel = "",
+                aantalKeerGespeeld = 0,
+                like = true,
+                lengte = 1,
+                genre = "",
+                platenMaatschappij = ""
             };
 
             //Testen of dit klopt met AreEqual()
-            Assert.AreEqual(p.@private, true);
+            Assert.AreEqual(n.regio, null);
         }
     }
 }

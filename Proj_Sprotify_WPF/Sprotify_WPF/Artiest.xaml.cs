@@ -27,6 +27,10 @@ namespace Sprotify_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+            dataArtiesten.IsReadOnly = true;
+            btnDeleteData.Visibility = Visibility.Hidden;
+            btnUpdateData.Visibility = Visibility.Hidden;
             dataArtiesten.ItemsSource = DatabaseOperations.OphalenArtiesten();
         }
 
@@ -36,6 +40,64 @@ namespace Sprotify_WPF
             MainWindow homeWindow = new MainWindow();
             homeWindow.Show();
             this.Close();
+        }
+
+        private void ChangeData_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataArtiesten.IsReadOnly)
+            {
+                dataArtiesten.IsReadOnly = false;
+                btnDeleteData.Visibility = Visibility.Visible;
+                btnUpdateData.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                dataArtiesten.IsReadOnly = true;
+                btnDeleteData.Visibility = Visibility.Hidden;
+                btnUpdateData.Visibility = Visibility.Hidden;
+            }
+
+        }
+
+        private void UpdateData_Click(object sender, RoutedEventArgs e)
+        {
+            string foutmeldingen = Valideer("Artiest");
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                Sprotify_DAL.Artiest a = dataArtiesten.SelectedItem as Sprotify_DAL.Artiest;
+                int ok = DatabaseOperations.AanpassenArtiest(a);
+                if (ok > 0)
+                {
+                    dataArtiesten.ItemsSource = DatabaseOperations.OphalenArtiesten();
+                }
+                else
+                {
+                    MessageBox.Show($"{a.naam} aanpassen is mislukt.");
+
+                }
+            }
+        }
+
+        private void DeleteData_Click(object sender, RoutedEventArgs e)
+        {
+            string foutmeldingen = Valideer("Artiest");
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                Sprotify_DAL.Artiest a = dataArtiesten.SelectedItem as Sprotify_DAL.Artiest;
+                int ok = DatabaseOperations.VerwijderenArtiest(a);
+                if (ok > 0)
+                {
+                    dataArtiesten.ItemsSource = DatabaseOperations.OphalenArtiesten();
+                }
+                else
+                {
+                    MessageBox.Show($"{a.naam} is niet verwijderd.");
+                }
+            }
+            else
+            {
+                MessageBox.Show(foutmeldingen);
+            }
         }
 
         private void ArtiestToevoegen_Click(object sender, RoutedEventArgs e)
@@ -51,24 +113,15 @@ namespace Sprotify_WPF
         }
 
 
-        //private void BtnOphalenViaWerknemerID_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (int.TryParse(txtArtiestID.Text, out int artiestID))
-        //    {
-        //        Artiest a = DatabaseOperations.OphalenArtiestViaZoek(artiestID);
-        //        if (a != null)
-        //        {
-        //            lblArtiest.Content = a.Name + " " + a.Genre;
-        //        }
-        //        else
-        //        {
-        //            lblWerknemer.Content = "Werknemer niet gevonden!";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        lblWerknemer.Content = "WerknemerId is een verplicht numeriek veld!"
-        //    }
-        //}
+        //VALIDATIE
+        private string Valideer(string columnName)
+        {
+            if (columnName == "Artiest" && dataArtiesten.SelectedItem == null)
+            {
+                return "Selecteer een artiest!" + Environment.NewLine;
+            }
+            return "";
+
+        }
     }
 }

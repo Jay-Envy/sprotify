@@ -1,0 +1,81 @@
+17:56:27 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
+--------------------------------------------------------------------------------
+
+19:55:34 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
+--------------------------------------------------------------------------------
+
+20:01:00 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
+--------------------------------------------------------------------------------
+
+20:12:47 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
+--------------------------------------------------------------------------------
+
+20:27:54 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
+--------------------------------------------------------------------------------
+
+20:33:34 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
+--------------------------------------------------------------------------------
+
+20:41:14 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
+--------------------------------------------------------------------------------
+
+20:44:59 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
+--------------------------------------------------------------------------------
+
+20:47:33 pm
+DbUpdateException
+An error occurred while updating the entries. See the inner exception for details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
+--------------------------------------------------------------------------------
+

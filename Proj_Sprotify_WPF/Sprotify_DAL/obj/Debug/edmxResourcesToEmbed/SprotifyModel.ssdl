@@ -5,7 +5,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="verified" Type="bit" />
+    <Property Name="verified" Type="bit" Nullable="false" />
     <Property Name="maandelijkseLuisteraars" Type="int" Nullable="false" />
     <Property Name="naam" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
@@ -25,6 +25,10 @@
     <Property Name="titel" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="aantalKeerGespeeld" Type="int" Nullable="false" />
     <Property Name="lengte" Type="int" Nullable="false" />
+    <Property Name="regio" Type="varchar" MaxLength="20" />
+    <Property Name="genre" Type="varchar" MaxLength="20" />
+    <Property Name="platenMaatschappij" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="like" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Playlist">
     <Key>
@@ -40,7 +44,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="playlistId" Type="int" Nullable="false" />
-    <Property Name="nummerId" Type="int" Nullable="false" />
+    <Property Name="nummerId" Type="int" />
   </EntityType>
   <Association Name="FK13_artiestId">
     <End Role="Artiest" Type="Self.Artiest" Multiplicity="1" />
@@ -55,7 +59,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK14_nummerId">
-    <End Role="Nummer" Type="Self.Nummer" Multiplicity="1" />
+    <End Role="Nummer" Type="Self.Nummer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ArtiestNummer" Type="Self.ArtiestNummer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Nummer">
@@ -79,7 +85,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK4_nummerId">
-    <End Role="Nummer" Type="Self.Nummer" Multiplicity="1" />
+    <End Role="Nummer" Type="Self.Nummer" Multiplicity="0..1" />
     <End Role="PlaylistNummer" Type="Self.PlaylistNummer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Nummer">

@@ -101,17 +101,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NummerToevoegen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Nummer.xaml.cs">
       <DependentUpon>Nummer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="NummerToevoegen.xaml.cs">
-      <DependentUpon>NummerToevoegen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

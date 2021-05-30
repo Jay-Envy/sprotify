@@ -16,7 +16,7 @@ namespace Sprotify_DAL
     {
         public int id { get; set; }
         public int playlistId { get; set; }
-        public int nummerId { get; set; }
+        public Nullable<int> nummerId { get; set; }
     
         public virtual Nummer Nummer { get; set; }
         public virtual Playlist Playlist { get; set; }

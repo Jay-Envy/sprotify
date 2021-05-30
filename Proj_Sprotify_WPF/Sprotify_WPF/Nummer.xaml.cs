@@ -27,7 +27,7 @@ namespace Sprotify_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            dataSearch.ItemsSource = DatabaseOperations.OphalenNummers();
+            dataSearch.ItemsSource = DatabaseOperations.OphalenArtiestNummer();
             btnUpdateData.Visibility = Visibility.Hidden;
             btnDeleteData.Visibility = Visibility.Hidden;
             dataSearch.IsReadOnly = true;
@@ -35,8 +35,8 @@ namespace Sprotify_WPF
 
         private void NewNummer_Click(object sender, RoutedEventArgs e)
         {
-            NummerToevoegen nummerToevoegenWindow = new NummerToevoegen();
-            nummerToevoegenWindow.Show();
+            ArtiestToevoegen artiestToevoegenWindow = new ArtiestToevoegen();
+            artiestToevoegenWindow.Show();
         }
 
         private void Home_Click(object sender, RoutedEventArgs e)
@@ -65,12 +65,88 @@ namespace Sprotify_WPF
 
         private void UpdateData_Click(object sender, RoutedEventArgs e)
         {
-
+            string foutmeldingen = Valideer("Nummer");
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                Sprotify_DAL.Nummer nummer = dataSearch.SelectedItem as Sprotify_DAL.Nummer;
+                int ok = DatabaseOperations.AanpassenNummer(nummer);
+                if (ok > 0)
+                {
+                    dataSearch.ItemsSource = DatabaseOperations.OphalenArtiestNummer();
+                }
+                else
+                {
+                    MessageBox.Show($"{nummer.titel} aanpassen is mislukt.");
+                    
+                }
+            }
         }
 
         private void DeleteData_Click(object sender, RoutedEventArgs e)
         {
+            string foutmeldingen = Valideer("Nummer");
+            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            {
+                Sprotify_DAL.Nummer nummer = dataSearch.SelectedItem as Sprotify_DAL.Nummer;
+                int ok = DatabaseOperations.VerwijderenNummer(nummer);
+                if(ok > 0)
+                {
+                    dataSearch.ItemsSource = DatabaseOperations.OphalenArtiestNummer();
+                }
+                else
+                {
+                    MessageBox.Show($"{nummer.titel} is niet verwijderd.");
+                }
+            }
+            else
+            {
+                MessageBox.Show(foutmeldingen);
+            }
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            //Als niets wordt ingevuld, geef alle nummers weer, met een zoekopdracht, zoek specifieke nummers
+            string search = txtSearch.Text;
+
+            if (search.Length > 0)
+            {
+                List<ArtiestNummer> nums = DatabaseOperations.OphalenArtiestNummerViaContains(search);
+                if (nums.Count != 0)
+                {
+                    dataSearch.ItemsSource = nums;
+                }
+                else
+                {
+                    MessageBox.Show("Er zijn geen resultaten gevonden dat overeenkomt met uw zoekopdracht " + search);
+                }
+            }
+            else
+            {
+                List<Sprotify_DAL.ArtiestNummer> nums = DatabaseOperations.OphalenArtiestNummer();
+                if (nums.Count != 0)
+                {
+                    dataSearch.ItemsSource = nums;
+                }
+                else
+                {
+                    MessageBox.Show("Er zijn geen resultaten gevonden");
+                }
+            }
+
 
         }
+
+        //VALIDATIE
+        private string Valideer(string columnName)
+        {
+            if (columnName == "Nummer" && dataSearch.SelectedItem == null)
+            {
+                return "Selecteer een nummer!" + Environment.NewLine;
+            }
+            return "";
+
+        }
+
     }
 }

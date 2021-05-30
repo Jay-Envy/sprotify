@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignDarkBackground}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Nummer" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Nummer" Height="600" Width="1200" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -29,17 +29,26 @@
         <Button x:Name="btnHome" Content="{materialDesign:PackIcon Kind=Home, Size=25 }" Grid.Column="0" Grid.Row="0" Margin="5" Click="Home_Click"/>
         <Label Content="Nummers"  Grid.Row="0" Foreground="{DynamicResource MaterialDesignDarkForeground}" Grid.Column="1" Margin="5" FontSize="23" FontWeight="Bold" />
         <Button x:Name="btnAddNummer" Content="{materialDesign:PackIcon Kind=Plus, Size=25 }" Margin="5" ToolTip="Icon" Grid.Row="0" Grid.Column="2" Click="NewNummer_Click" />
-        <StackPanel Grid.Row="1" Grid.Column="2">
-            <Button x:Name="btnChangeData" Content="{materialDesign:PackIcon Kind=Cog, Size=25 }" Margin="5" ToolTip="Icon" Grid.Row="1" Grid.Column="2" Click="ChangeData_Click" />
-            <Button x:Name="btnUpdateData" Content="{materialDesign:PackIcon Kind=Update, Size=25 }" Margin="5" ToolTip="Icon" Grid.Row="2" Grid.Column="2" Click="UpdateData_Click" />
-            <Button x:Name="btnDeleteData" Content="{materialDesign:PackIcon Kind=Delete, Size=25 }" Margin="5" ToolTip="Icon" Grid.Row="3" Grid.Column="2" Click="DeleteData_Click" />
+        <StackPanel Grid.Row="3" Grid.Column="2">
+            <Button x:Name="btnChangeData" Content="{materialDesign:PackIcon Kind=Cog, Size=25 }" Margin="5" ToolTip="Data aanpassen" Grid.Row="1" Grid.Column="2" Click="ChangeData_Click" />
+            <Button x:Name="btnUpdateData" Content="{materialDesign:PackIcon Kind=Update, Size=25 }" Margin="5" ToolTip="Data updaten" Grid.Row="2" Grid.Column="2" Click="UpdateData_Click" />
+            <Button x:Name="btnDeleteData" Content="{materialDesign:PackIcon Kind=Delete, Size=25 }" Margin="5" ToolTip="Data verwijderen" Grid.Row="3" Grid.Column="2" Click="DeleteData_Click" />
         </StackPanel>
 
-        <DataGrid x:Name="dataSearch" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Row="1">
+
+        <TextBox x:Name="txtSearch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" materialDesign:HintAssist.Hint="Zoek nummer" />
+        <Button Content="{materialDesign:PackIcon Kind=Search, Size=25 }" ToolTip="Zoek" Margin="5" Grid.Row="1" Grid.Column="2" Click="Search_Click" />
+
+        <Label Content="Zoekresultaten:" Margin="5" Grid.Row="3"/>
+        <DataGrid x:Name="dataSearch" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding titel}" Header="Titel"/>
+                <DataGridTextColumn Binding="{Binding Nummer.titel}" Header="Titel"/>
                 <DataGridTextColumn Binding="{Binding Artiest.naam}" Header="Artiest"/>
-                <DataGridTextColumn Binding="{Binding span}" Header="Duur"/>
+                <DataGridTextColumn Binding="{Binding Nummer.Span, StringFormat=mm\\:ss}" Header="Lengte"/>
+                <DataGridTextColumn Binding="{Binding Nummer.genre}" Header="Genre"/>
+                <DataGridTextColumn Binding="{Binding Nummer.regio}" Header="Regio"/>
+                <DataGridTextColumn Binding="{Binding Nummer.platenMaatschappij}" Header="Platenmaatschappij"/>
+                <DataGridTextColumn Binding="{Binding Nummer.aantalKeerGespeeld}" Header="Aantal keer gespeeld"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

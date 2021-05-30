@@ -25,6 +25,10 @@ namespace Sprotify_DAL
         public string titel { get; set; }
         public int aantalKeerGespeeld { get; set; }
         public int lengte { get; set; }
+        public string regio { get; set; }
+        public string genre { get; set; }
+        public string platenMaatschappij { get; set; }
+        public bool like { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArtiestNummer> ArtiestNummers { get; set; }

@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SprotifyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SprotifyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Artiest">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="verified" Type="bit" />
+          <Property Name="verified" Type="bit" Nullable="false" />
           <Property Name="maandelijkseLuisteraars" Type="int" Nullable="false" />
           <Property Name="naam" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
@@ -30,6 +30,10 @@
           <Property Name="titel" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="aantalKeerGespeeld" Type="int" Nullable="false" />
           <Property Name="lengte" Type="int" Nullable="false" />
+          <Property Name="regio" Type="varchar" MaxLength="20" />
+          <Property Name="genre" Type="varchar" MaxLength="20" />
+          <Property Name="platenMaatschappij" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="like" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Playlist">
           <Key>
@@ -45,7 +49,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="playlistId" Type="int" Nullable="false" />
-          <Property Name="nummerId" Type="int" Nullable="false" />
+          <Property Name="nummerId" Type="int" />
         </EntityType>
         <Association Name="FK13_artiestId">
           <End Role="Artiest" Type="Self.Artiest" Multiplicity="1" />
@@ -60,7 +64,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK14_nummerId">
-          <End Role="Nummer" Type="Self.Nummer" Multiplicity="1" />
+          <End Role="Nummer" Type="Self.Nummer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ArtiestNummer" Type="Self.ArtiestNummer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Nummer">
@@ -84,7 +90,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK4_nummerId">
-          <End Role="Nummer" Type="Self.Nummer" Multiplicity="1" />
+          <End Role="Nummer" Type="Self.Nummer" Multiplicity="0..1" />
           <End Role="PlaylistNummer" Type="Self.PlaylistNummer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Nummer">
@@ -118,20 +124,42 @@
             <End Role="PlaylistNummer" EntitySet="PlaylistNummer" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SprotifyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SprotifyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Artiest" EntityType="SprotifyModel.Artiest" />
+          <EntitySet Name="ArtiestNummer" EntityType="SprotifyModel.ArtiestNummer" />
+          <EntitySet Name="Nummer" EntityType="SprotifyModel.Nummer" />
+          <EntitySet Name="Playlist" EntityType="SprotifyModel.Playlist" />
+          <EntitySet Name="PlaylistNummer" EntityType="SprotifyModel.PlaylistNummer" />
+          <AssociationSet Name="FK13_artiestId" Association="SprotifyModel.FK13_artiestId">
+            <End Role="Artiest" EntitySet="Artiest" />
+            <End Role="ArtiestNummer" EntitySet="ArtiestNummer" />
+          </AssociationSet>
+          <AssociationSet Name="FK14_nummerId" Association="SprotifyModel.FK14_nummerId">
+            <End Role="Nummer" EntitySet="Nummer" />
+            <End Role="ArtiestNummer" EntitySet="ArtiestNummer" />
+          </AssociationSet>
+          <AssociationSet Name="FK4_nummerId" Association="SprotifyModel.FK4_nummerId">
+            <End Role="Nummer" EntitySet="Nummer" />
+            <End Role="PlaylistNummer" EntitySet="PlaylistNummer" />
+          </AssociationSet>
+          <AssociationSet Name="FK3_playlistId" Association="SprotifyModel.FK3_playlistId">
+            <End Role="Playlist" EntitySet="Playlist" />
+            <End Role="PlaylistNummer" EntitySet="PlaylistNummer" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Artiest">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="verified" Type="Boolean" />
+          <Property Name="verified" Type="Boolean" Nullable="false" />
           <Property Name="maandelijkseLuisteraars" Type="Int32" Nullable="false" />
-          <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ArtiestNummers" Relationship="Self.FK13_artiestId" FromRole="Artiest" ToRole="ArtiestNummer" />
+          <Property Name="naam" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ArtiestNummers" Relationship="SprotifyModel.FK13_artiestId" FromRole="Artiest" ToRole="ArtiestNummer" />
         </EntityType>
         <EntityType Name="ArtiestNummer">
           <Key>
@@ -140,28 +168,32 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="artiestId" Type="Int32" Nullable="false" />
           <Property Name="nummerId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Artiest" Relationship="Self.FK13_artiestId" FromRole="ArtiestNummer" ToRole="Artiest" />
-          <NavigationProperty Name="Nummer" Relationship="Self.FK14_nummerId" FromRole="ArtiestNummer" ToRole="Nummer" />
+          <NavigationProperty Name="Artiest" Relationship="SprotifyModel.FK13_artiestId" FromRole="ArtiestNummer" ToRole="Artiest" />
+          <NavigationProperty Name="Nummer" Relationship="SprotifyModel.FK14_nummerId" FromRole="ArtiestNummer" ToRole="Nummer" />
         </EntityType>
         <EntityType Name="Nummer">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="titel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="titel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="aantalKeerGespeeld" Type="Int32" Nullable="false" />
           <Property Name="lengte" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ArtiestNummers" Relationship="Self.FK14_nummerId" FromRole="Nummer" ToRole="ArtiestNummer" />
-          <NavigationProperty Name="PlaylistNummers" Relationship="Self.FK4_nummerId" FromRole="Nummer" ToRole="PlaylistNummer" />
+          <Property Name="regio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="genre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="platenMaatschappij" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="like" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ArtiestNummers" Relationship="SprotifyModel.FK14_nummerId" FromRole="Nummer" ToRole="ArtiestNummer" />
+          <NavigationProperty Name="PlaylistNummers" Relationship="SprotifyModel.FK4_nummerId" FromRole="Nummer" ToRole="PlaylistNummer" />
         </EntityType>
         <EntityType Name="Playlist">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="naam" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="private" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="PlaylistNummers" Relationship="Self.FK3_playlistId" FromRole="Playlist" ToRole="PlaylistNummer" />
+          <NavigationProperty Name="PlaylistNummers" Relationship="SprotifyModel.FK3_playlistId" FromRole="Playlist" ToRole="PlaylistNummer" />
         </EntityType>
         <EntityType Name="PlaylistNummer">
           <Key>
@@ -169,13 +201,13 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="playlistId" Type="Int32" Nullable="false" />
-          <Property Name="nummerId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Nummer" Relationship="Self.FK4_nummerId" FromRole="PlaylistNummer" ToRole="Nummer" />
-          <NavigationProperty Name="Playlist" Relationship="Self.FK3_playlistId" FromRole="PlaylistNummer" ToRole="Playlist" />
+          <Property Name="nummerId" Type="Int32" />
+          <NavigationProperty Name="Nummer" Relationship="SprotifyModel.FK4_nummerId" FromRole="PlaylistNummer" ToRole="Nummer" />
+          <NavigationProperty Name="Playlist" Relationship="SprotifyModel.FK3_playlistId" FromRole="PlaylistNummer" ToRole="Playlist" />
         </EntityType>
         <Association Name="FK13_artiestId">
-          <End Role="Artiest" Type="Self.Artiest" Multiplicity="1" />
-          <End Role="ArtiestNummer" Type="Self.ArtiestNummer" Multiplicity="*" />
+          <End Type="SprotifyModel.Artiest" Role="Artiest" Multiplicity="1" />
+          <End Type="SprotifyModel.ArtiestNummer" Role="ArtiestNummer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Artiest">
               <PropertyRef Name="id" />
@@ -186,8 +218,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK14_nummerId">
-          <End Role="Nummer" Type="Self.Nummer" Multiplicity="1" />
-          <End Role="ArtiestNummer" Type="Self.ArtiestNummer" Multiplicity="*" />
+          <End Type="SprotifyModel.Nummer" Role="Nummer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SprotifyModel.ArtiestNummer" Role="ArtiestNummer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Nummer">
               <PropertyRef Name="id" />
@@ -198,8 +232,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK4_nummerId">
-          <End Role="Nummer" Type="Self.Nummer" Multiplicity="1" />
-          <End Role="PlaylistNummer" Type="Self.PlaylistNummer" Multiplicity="*" />
+          <End Type="SprotifyModel.Nummer" Role="Nummer" Multiplicity="0..1" />
+          <End Type="SprotifyModel.PlaylistNummer" Role="PlaylistNummer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Nummer">
               <PropertyRef Name="id" />
@@ -210,8 +244,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK3_playlistId">
-          <End Role="Playlist" Type="Self.Playlist" Multiplicity="1" />
-          <End Role="PlaylistNummer" Type="Self.PlaylistNummer" Multiplicity="*" />
+          <End Type="SprotifyModel.Playlist" Role="Playlist" Multiplicity="1" />
+          <End Type="SprotifyModel.PlaylistNummer" Role="PlaylistNummer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Playlist">
               <PropertyRef Name="id" />
@@ -221,29 +255,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SprotifyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Artiest" EntityType="Self.Artiest" />
-          <EntitySet Name="ArtiestNummer" EntityType="Self.ArtiestNummer" />
-          <EntitySet Name="Nummer" EntityType="Self.Nummer" />
-          <EntitySet Name="Playlist" EntityType="Self.Playlist" />
-          <EntitySet Name="PlaylistNummer" EntityType="Self.PlaylistNummer" />
-          <AssociationSet Name="FK13_artiestId" Association="Self.FK13_artiestId">
-            <End Role="Artiest" EntitySet="Artiest" />
-            <End Role="ArtiestNummer" EntitySet="ArtiestNummer" />
-          </AssociationSet>
-          <AssociationSet Name="FK14_nummerId" Association="Self.FK14_nummerId">
-            <End Role="Nummer" EntitySet="Nummer" />
-            <End Role="ArtiestNummer" EntitySet="ArtiestNummer" />
-          </AssociationSet>
-          <AssociationSet Name="FK4_nummerId" Association="Self.FK4_nummerId">
-            <End Role="Nummer" EntitySet="Nummer" />
-            <End Role="PlaylistNummer" EntitySet="PlaylistNummer" />
-          </AssociationSet>
-          <AssociationSet Name="FK3_playlistId" Association="Self.FK3_playlistId">
-            <End Role="Playlist" EntitySet="Playlist" />
-            <End Role="PlaylistNummer" EntitySet="PlaylistNummer" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -253,47 +264,51 @@
           <EntitySetMapping Name="Artiest">
             <EntityTypeMapping TypeName="SprotifyModel.Artiest">
               <MappingFragment StoreEntitySet="Artiest">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="verified" ColumnName="verified" />
-                <ScalarProperty Name="maandelijkseLuisteraars" ColumnName="maandelijkseLuisteraars" />
                 <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="maandelijkseLuisteraars" ColumnName="maandelijkseLuisteraars" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ArtiestNummer">
             <EntityTypeMapping TypeName="SprotifyModel.ArtiestNummer">
               <MappingFragment StoreEntitySet="ArtiestNummer">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="artiestId" ColumnName="artiestId" />
                 <ScalarProperty Name="nummerId" ColumnName="nummerId" />
+                <ScalarProperty Name="artiestId" ColumnName="artiestId" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Nummer">
             <EntityTypeMapping TypeName="SprotifyModel.Nummer">
               <MappingFragment StoreEntitySet="Nummer">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="titel" ColumnName="titel" />
-                <ScalarProperty Name="aantalKeerGespeeld" ColumnName="aantalKeerGespeeld" />
+                <ScalarProperty Name="like" ColumnName="like" />
+                <ScalarProperty Name="platenMaatschappij" ColumnName="platenMaatschappij" />
+                <ScalarProperty Name="genre" ColumnName="genre" />
+                <ScalarProperty Name="regio" ColumnName="regio" />
                 <ScalarProperty Name="lengte" ColumnName="lengte" />
+                <ScalarProperty Name="aantalKeerGespeeld" ColumnName="aantalKeerGespeeld" />
+                <ScalarProperty Name="titel" ColumnName="titel" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Playlist">
             <EntityTypeMapping TypeName="SprotifyModel.Playlist">
               <MappingFragment StoreEntitySet="Playlist">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="naam" ColumnName="naam" />
                 <ScalarProperty Name="private" ColumnName="private" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PlaylistNummer">
             <EntityTypeMapping TypeName="SprotifyModel.PlaylistNummer">
               <MappingFragment StoreEntitySet="PlaylistNummer">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="playlistId" ColumnName="playlistId" />
                 <ScalarProperty Name="nummerId" ColumnName="nummerId" />
+                <ScalarProperty Name="playlistId" ColumnName="playlistId" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
