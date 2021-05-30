@@ -79,3 +79,12 @@ An error occurred while updating the entries. See the inner exception for detail
    at Sprotify_DAL.DatabaseOperations.ToevoegenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 38
 --------------------------------------------------------------------------------
 
+14:30:33 pm
+ArgumentNullException
+Value cannot be null.
+Parameter name: entity
+   at System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   at System.Data.Entity.DbContext.Entry[TEntity](TEntity entity)
+   at Sprotify_DAL.DatabaseOperations.VerwijderenNummer(Nummer nummer) in C:\Users\Jay-Envy\OneDrive\Documenten\Thomas More\Datamanipulatie\PE-Opdracht\sprotify\Proj_Sprotify_WPF\Sprotify_DAL\DatabaseOperations.cs:line 56
+--------------------------------------------------------------------------------
+

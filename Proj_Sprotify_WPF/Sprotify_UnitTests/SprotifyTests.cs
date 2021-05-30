@@ -37,7 +37,7 @@ namespace Sprotify_UnitTests
             };
 
             //Testen of dit klopt met AreEqual()
-            Assert.AreEqual(n.regio, null);
+            Assert.AreEqual(true, string.IsNullOrWhiteSpace(n.regio));
         }
     }
 }

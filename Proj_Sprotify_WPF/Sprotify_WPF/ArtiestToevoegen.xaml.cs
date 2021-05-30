@@ -87,7 +87,6 @@ namespace Sprotify_WPF
                 {
                     //Validatie voor alle velden buiten checkbox -> sowieso true / false
                     foutmelding = Valideer("radio");
-                    foutmelding += Valideer("txtRegio");
                     foutmelding += Valideer("txtPlaten");
                     foutmelding += Valideer("txtNaam");
                     foutmelding += Valideer("txtLengte");
@@ -119,7 +118,7 @@ namespace Sprotify_WPF
                         n.aantalKeerGespeeld = random.Next();
                         n.genre = txtGenre.Text;
                         n.platenMaatschappij = txtPlaten.Text;
-                        n.like = cbCheckbox.IsChecked == true;
+                        n.like = cbCheckbox.IsChecked ?? false;
                         n.regio = txtRegio.Text;
 
                         //Check of het nieuwe nummer geldig is

@@ -39,10 +39,6 @@ namespace Sprotify_DAL
                 {
                     return "Het genre mag niet leeg zijn!";
                 }
-                if (columnName == "regio" && string.IsNullOrWhiteSpace(regio))
-                {
-                    return "De regio mag niet leeg zijn!";
-                }
                 if (columnName == "platenMaatschappij" && string.IsNullOrWhiteSpace(platenMaatschappij))
                 {
                     return "De platenmaatschappij mag niet leeg zijn!";

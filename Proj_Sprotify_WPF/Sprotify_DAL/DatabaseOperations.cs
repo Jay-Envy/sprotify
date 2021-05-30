@@ -137,8 +137,8 @@ namespace Sprotify_DAL
                     .Include(x => x.Artiest)
                     .Include(x => x.Nummer)
                     .Where(x => x.artiestId == x.Artiest.id && x.nummerId == x.Nummer.id)
-                    .OrderBy(x => x.artiestId)
-                    .ThenBy(x => x.nummerId);
+                    .OrderBy(x => x.Nummer.titel)
+                    .ThenBy(x => x.Artiest.naam);
                 return query.ToList();
             }
         }

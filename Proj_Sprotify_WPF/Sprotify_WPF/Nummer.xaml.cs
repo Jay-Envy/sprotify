@@ -27,14 +27,25 @@ namespace Sprotify_WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //data opvullen
             dataSearch.ItemsSource = DatabaseOperations.OphalenArtiestNummer();
+            //zichtbaar wat zichtbaar mag zijn, datagrid is readonly
             btnUpdateData.Visibility = Visibility.Hidden;
             btnDeleteData.Visibility = Visibility.Hidden;
+            //aanpassen verbergen
+            txtTitel.Visibility = Visibility.Hidden;
+            cmbArtiest.Visibility = Visibility.Hidden;
+            txtGenre.Visibility = Visibility.Hidden;
+            txtLengte.Visibility = Visibility.Hidden;
+            txtRegio.Visibility = Visibility.Hidden;
+            txtPlaten.Visibility = Visibility.Hidden;
             dataSearch.IsReadOnly = true;
+            cmbArtiest.ItemsSource = DatabaseOperations.OphalenArtiesten();
         }
 
         private void NewNummer_Click(object sender, RoutedEventArgs e)
         {
+            //Nieuwe nummers worden toegevoegd aan de database, maar worden niet getoond
             ArtiestToevoegen artiestToevoegenWindow = new ArtiestToevoegen();
             artiestToevoegenWindow.Show();
         }
@@ -50,35 +61,71 @@ namespace Sprotify_WPF
         {
             if (dataSearch.IsReadOnly)
             {
-                dataSearch.IsReadOnly = false;
                 btnDeleteData.Visibility = Visibility.Visible;
                 btnUpdateData.Visibility = Visibility.Visible;
+                txtTitel.Visibility = Visibility.Visible;
+                cmbArtiest.Visibility = Visibility.Visible;
+                txtGenre.Visibility = Visibility.Visible;
+                txtLengte.Visibility = Visibility.Visible;
+                txtRegio.Visibility = Visibility.Visible;
+                txtPlaten.Visibility = Visibility.Visible;
             }
             else
             {
-                dataSearch.IsReadOnly = true;
                 btnDeleteData.Visibility = Visibility.Hidden;
                 btnUpdateData.Visibility = Visibility.Hidden;
+                txtTitel.Visibility = Visibility.Hidden;
+                cmbArtiest.Visibility = Visibility.Hidden;
+                txtGenre.Visibility = Visibility.Hidden;
+                txtLengte.Visibility = Visibility.Hidden;
+                txtRegio.Visibility = Visibility.Hidden;
+                txtPlaten.Visibility = Visibility.Hidden;
             }
 
         }
 
+
+        //Update/Delete bij nummer werkt spijtig genoeg niet. Ik geloof dat dit te maken heeft met de connectie met artiest
         private void UpdateData_Click(object sender, RoutedEventArgs e)
         {
-            string foutmeldingen = Valideer("Nummer");
-            if (string.IsNullOrWhiteSpace(foutmeldingen))
+            string foutmelding = Valideer("Nummer");
+            foutmelding += Valideer("txtPlaten");
+            foutmelding += Valideer("txtTitel");
+            foutmelding += Valideer("txtLengte");
+            foutmelding += Valideer("txtGenre");
+            foutmelding += Valideer("cmbArtiest");
+            if (string.IsNullOrWhiteSpace(foutmelding))
             {
-                Sprotify_DAL.Nummer nummer = dataSearch.SelectedItem as Sprotify_DAL.Nummer;
-                int ok = DatabaseOperations.AanpassenNummer(nummer);
-                if (ok > 0)
+                if (dataSearch.SelectedItem is Sprotify_DAL.Nummer nummer)
                 {
-                    dataSearch.ItemsSource = DatabaseOperations.OphalenArtiestNummer();
+                    nummer.titel = txtTitel.Text;
+                    nummer.genre = txtGenre.Text;
+                    nummer.lengte = int.Parse(txtLengte.Text);
+                    nummer.platenMaatschappij = txtPlaten.Text;
+                    nummer.regio = txtRegio.Text;
+
+                    if (nummer.IsGeldig())
+                    {
+                        int ok = DatabaseOperations.AanpassenNummer(nummer);
+                        if (ok <= 0)
+                        {
+                            MessageBox.Show($"Nummer {nummer.titel} is niet gewijzigd.");
+                        }
+                        else
+                        {
+                            dataSearch.ItemsSource = DatabaseOperations.OphalenArtiestNummer();
+                            Resetten();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(nummer.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show($"{nummer.titel} aanpassen is mislukt.");
-                    
-                }
+            }
+            else
+            {
+                MessageBox.Show(foutmelding);
             }
         }
 
@@ -133,8 +180,41 @@ namespace Sprotify_WPF
                     MessageBox.Show("Er zijn geen resultaten gevonden");
                 }
             }
+        }
 
+        //Zoek met enter
+        private void Button_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                Search_Click(sender, e);
+            }
+        }
 
+        //Data resetten
+        private void Resetten()
+        {
+            txtGenre.Text = "";
+            txtTitel.Text = "";
+            txtRegio.Text = "";
+            txtPlaten.Text = "";
+            txtLengte.Text = "";
+            txtSearch.Text = "";
+            cmbArtiest.SelectedIndex = -1;
+        }
+
+        private void DataSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataSearch.SelectedItem is Sprotify_DAL.Nummer nummer)
+            {
+                txtTitel.Text = nummer.titel;
+                txtGenre.Text = nummer.genre;
+                txtLengte.Text = nummer.lengte.ToString();
+                txtPlaten.Text = nummer.platenMaatschappij;
+                txtRegio.Text = nummer.regio;
+                //cmbArtiest.IsEnabled = false;
+                cmbArtiest.ItemsSource = DatabaseOperations.OphalenArtiesten();
+            }
         }
 
         //VALIDATIE
@@ -144,9 +224,30 @@ namespace Sprotify_WPF
             {
                 return "Selecteer een nummer!" + Environment.NewLine;
             }
+            else if (columnName == "txtTitel" && string.IsNullOrWhiteSpace(txtTitel.Text))
+            {
+                return "Titel mag niet leeg zijn!" + Environment.NewLine;
+            }
+            else if (columnName == "txtGenre" && string.IsNullOrWhiteSpace(txtGenre.Text))
+            {
+                return "Genre mag niet leeg zijn!" + Environment.NewLine;
+            }
+            else if (columnName == "txtLengte" && int.TryParse(txtLengte.Text, out int lengte))
+            {
+                return "Lengte moet een numerieke waarde zijn!" + Environment.NewLine;
+            }
+            else if (columnName == "txtPlaten" && string.IsNullOrWhiteSpace(txtPlaten.Text))
+            {
+                return "Platenmaatschappij mag niet leeg zijn!" + Environment.NewLine;
+            }
+            else if (columnName == "cmbArtiest" && cmbArtiest.SelectedItem == null)
+            {
+                return "Selecteer een artiest!" + Environment.NewLine;
+            }
             return "";
 
         }
+
 
     }
 }

@@ -25,22 +25,23 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Button x:Name="btnHome" Content="{materialDesign:PackIcon Kind=Home, Size=25 }" Grid.Column="0" Grid.Row="0" Margin="5" Click="Home_Click"/>
         <Label Content="Nummers"  Grid.Row="0" Foreground="{DynamicResource MaterialDesignDarkForeground}" Grid.Column="1" Margin="5" FontSize="23" FontWeight="Bold" />
-        <Button x:Name="btnAddNummer" Content="{materialDesign:PackIcon Kind=Plus, Size=25 }" Margin="5" ToolTip="Icon" Grid.Row="0" Grid.Column="2" Click="NewNummer_Click" />
+        <Button x:Name="btnAddNummer" Content="{materialDesign:PackIcon Kind=Plus, Size=25 }" Margin="5" ToolTip="Nieuw nummer" Grid.Row="0" Grid.Column="2" Click="NewNummer_Click" />
         <StackPanel Grid.Row="3" Grid.Column="2">
             <Button x:Name="btnChangeData" Content="{materialDesign:PackIcon Kind=Cog, Size=25 }" Margin="5" ToolTip="Data aanpassen" Grid.Row="1" Grid.Column="2" Click="ChangeData_Click" />
-            <Button x:Name="btnUpdateData" Content="{materialDesign:PackIcon Kind=Update, Size=25 }" Margin="5" ToolTip="Data updaten" Grid.Row="2" Grid.Column="2" Click="UpdateData_Click" />
+            <Button x:Name="btnUpdateData" Content="{materialDesign:PackIcon Kind=Edit, Size=25 }" Margin="5" ToolTip="Data updaten" Grid.Row="2" Grid.Column="2" Click="UpdateData_Click" />
             <Button x:Name="btnDeleteData" Content="{materialDesign:PackIcon Kind=Delete, Size=25 }" Margin="5" ToolTip="Data verwijderen" Grid.Row="3" Grid.Column="2" Click="DeleteData_Click" />
         </StackPanel>
 
+        <!--Zoekfunctie-->
+        <TextBox x:Name="txtSearch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" materialDesign:HintAssist.Hint="Zoek nummer" KeyDown="Button_KeyDown" />
+        <Button Content="{materialDesign:PackIcon Kind=Search, Size=25 }" ToolTip="Zoek" Margin="5" Grid.Row="1" Grid.Column="2" Click="Search_Click"  />
 
-        <TextBox x:Name="txtSearch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" materialDesign:HintAssist.Hint="Zoek nummer" />
-        <Button Content="{materialDesign:PackIcon Kind=Search, Size=25 }" ToolTip="Zoek" Margin="5" Grid.Row="1" Grid.Column="2" Click="Search_Click" />
-
-        <Label Content="Zoekresultaten:" Margin="5" Grid.Row="3"/>
-        <DataGrid x:Name="dataSearch" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+        <!--DataGrid-->
+        <DataGrid x:Name="dataSearch" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  SelectionChanged="DataSearch_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Nummer.titel}" Header="Titel"/>
                 <DataGridTextColumn Binding="{Binding Artiest.naam}" Header="Artiest"/>
@@ -51,5 +52,17 @@
                 <DataGridTextColumn Binding="{Binding Nummer.aantalKeerGespeeld}" Header="Aantal keer gespeeld"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <!--Data Aanpassen-->
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" >
+            <TextBox x:Name="txtTitel" materialDesign:HintAssist.Hint=" Titel               " Margin="5" />
+            <ComboBox x:Name="cmbArtiest" Grid.Column="2" ItemsSource="{Binding Path=Artiest}" DisplayMemberPath="naam" Grid.Row="2" Margin="5" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Artiest         " />
+            <TextBox x:Name="txtLengte" materialDesign:HintAssist.Hint=" Lengte      " Margin="5" />
+            <TextBox x:Name="txtGenre" materialDesign:HintAssist.Hint=" Genre        " Margin="5" />
+            <TextBox x:Name="txtRegio" materialDesign:HintAssist.Hint=" Regio        " Margin="5" />
+            <TextBox x:Name="txtPlaten" materialDesign:HintAssist.Hint=" Platenmaatschappij  " Margin="5" />
+            <!--<TextBox x:Name="txtGespeeld" materialDesign:HintAssist.Hint="  Aantal keer gespeeld  " Margin="5" />-->
+        </StackPanel>
+
     </Grid>
 </Window>
